@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gallery Photos | Admin</title>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="admin-body">
+<div class="admin-shell">
+  <%- include('../partials/adminNav', { active: 'gallery' }) %>
+  <main class="admin-main">
+    <div class="admin-header">
+      <div>
+        <h1>Gallery Photos</h1>
+        <p>Uploaded photos appear on the public Gallery page immediately.</p>
+      </div>
+    </div>
+
+    <% if (msg) { %><div class="admin-flash"><%= msg %></div><% } %>
+
+    <div class="admin-card">
+      <h2>Upload a New Photo</h2>
+      <form method="POST" action="/admin/gallery" enctype="multipart/form-data">
+        <div class="admin-form-grid">
+          <div class="admin-field full">
+            <label for="image">Photo</label>
+            <input type="file" id="image" name="image" accept="image/*" required>
+          </div>
+          <div class="admin-field">
+            <label for="caption">Caption</label>
+            <input type="text" id="caption" name="caption" placeholder="e.g. Mutton Kuzhambu, slow-cooked">
+          </div>
+          <div class="admin-field">
+            <label for="category">Category</label>
+            <select id="category" name="category">
+              <% categoryOptions.forEach(cat => { %>
+                <option value="<%= cat %>"><%= cat.charAt(0).toUpperCase() + cat.slice(1) %></option>
+              <% }) %>
+            </select>
+          </div>
+        </div>
+        <button type="submit" class="admin-btn--primary" style="margin-top:20px;">Upload Photo</button>
+      </form>
+    </div>
+
+    <div class="admin-card">
+      <h2>All Photos (<%= gallery.length %>)</h2>
+      <% if (gallery.length === 0) { %>
+        <p style="color:var(--ink-soft); font-size:14px;">No photos yet — upload your first one above.</p>
+      <% } else { %>
+      <table class="admin-table">
+        <thead><tr><th>Photo</th><th>Caption</th><th>Category</th><th>Actions</th></tr></thead>
+        <tbody>
+          <% gallery.forEach(item => { %>
+          <tr>
+            <td><img src="<%= item.image %>" class="admin-thumb" alt=""></td>
+            <td><%= item.caption %></td>
+            <td><span class="admin-badge"><%= item.category %></span></td>
+            <td>
+              <form method="POST" action="/admin/gallery/<%= item.id %>/delete" onsubmit="return confirm('Delete this photo? This cannot be undone.');" style="display:inline;">
+                <button type="submit" class="admin-btn admin-btn--delete">Delete</button>
+              </form>
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+      <% } %>
+    </div>
+  </main>
+</div>
+</body>
+</html>

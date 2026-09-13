@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 1200">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#5A1616"/>
+      <stop offset="55%" stop-color="#D96C2C"/>
+      <stop offset="100%" stop-color="#24140F"/>
+    </linearGradient>
+  </defs>
+  <rect width="1800" height="1200" fill="url(#g)"/>
+  <text x="900" y="620" text-anchor="middle" font-family="Georgia, serif" font-size="46" fill="#FFF4E3" opacity="0.85">Hero Photo</text>
+  <text x="900" y="670" text-anchor="middle" font-family="Georgia, serif" font-size="22" fill="#FFF4E3" opacity="0.6">Upload from Admin &gt; Site Settings</text>
+</svg>

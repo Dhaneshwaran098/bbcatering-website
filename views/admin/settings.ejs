@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Site Settings | Admin</title>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="admin-body">
+<div class="admin-shell">
+  <%- include('../partials/adminNav', { active: 'settings' }) %>
+  <main class="admin-main">
+    <div class="admin-header">
+      <div>
+        <h1>Site Settings</h1>
+        <p>Business info, contact details, branding and SEO — all reflected live on the public site.</p>
+      </div>
+    </div>
+
+    <% if (msg) { %><div class="admin-flash"><%= msg %></div><% } %>
+
+    <div class="admin-card">
+      <h2>Business &amp; Contact Details</h2>
+      <form method="POST" action="/admin/settings" enctype="multipart/form-data">
+        <div class="admin-form-grid">
+          <div class="admin-field">
+            <label for="businessName">Business Name</label>
+            <input type="text" id="businessName" name="businessName" value="<%= settings.businessName %>">
+          </div>
+          <div class="admin-field">
+            <label for="tagline">Homepage Tagline</label>
+            <input type="text" id="tagline" name="tagline" value="<%= settings.tagline %>">
+          </div>
+          <div class="admin-field">
+            <label for="aboutLede">About Page Lede Line</label>
+            <input type="text" id="aboutLede" name="aboutLede" value="<%= settings.aboutLede %>">
+          </div>
+          <div class="admin-field">
+            <label for="yearsExperience">Years of Experience (shown as "X Yrs")</label>
+            <input type="text" id="yearsExperience" name="yearsExperience" value="<%= settings.yearsExperience %>" placeholder="e.g. 7+">
+          </div>
+          <div class="admin-field">
+            <label for="phone">Phone Number (displayed)</label>
+            <input type="text" id="phone" name="phone" value="<%= settings.phone %>" placeholder="+91 98765 43210">
+          </div>
+          <div class="admin-field">
+            <label for="whatsapp">WhatsApp Number (digits only, with country code)</label>
+            <input type="text" id="whatsapp" name="whatsapp" value="<%= settings.whatsapp %>" placeholder="919876543210">
+          </div>
+          <div class="admin-field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" value="<%= settings.email %>">
+          </div>
+          <div class="admin-field">
+            <label for="address">Address / Restaurant Name</label>
+            <input type="text" id="address" name="address" value="<%= settings.address %>">
+          </div>
+          <div class="admin-field">
+            <label for="addressLocality">City</label>
+            <input type="text" id="addressLocality" name="addressLocality" value="<%= settings.addressLocality %>">
+          </div>
+          <div class="admin-field">
+            <label for="addressRegion">State</label>
+            <input type="text" id="addressRegion" name="addressRegion" value="<%= settings.addressRegion %>">
+          </div>
+          <div class="admin-field">
+            <label for="domain">Website Domain (for SEO tags)</label>
+            <input type="text" id="domain" name="domain" value="<%= settings.domain %>" placeholder="https://example.com">
+          </div>
+          <div class="admin-field">
+            <label for="instagram">Instagram URL</label>
+            <input type="text" id="instagram" name="instagram" value="<%= settings.instagram %>">
+          </div>
+          <div class="admin-field">
+            <label for="facebook">Facebook URL</label>
+            <input type="text" id="facebook" name="facebook" value="<%= settings.facebook %>">
+          </div>
+          <div class="admin-field">
+            <label for="youtube">YouTube URL</label>
+            <input type="text" id="youtube" name="youtube" value="<%= settings.youtube %>">
+          </div>
+          <div class="admin-field full">
+            <label for="mapEmbedUrl">Google Maps Embed URL</label>
+            <input type="text" id="mapEmbedUrl" name="mapEmbedUrl" value="<%= settings.mapEmbedUrl %>">
+          </div>
+        </div>
+        <button type="submit" class="admin-btn--primary" style="margin-top:20px;">Save Settings</button>
+      </form>
+    </div>
+
+    <div class="admin-card">
+      <h2>Branding &amp; Photos</h2>
+      <form method="POST" action="/admin/settings" enctype="multipart/form-data">
+        <div class="admin-form-grid">
+          <div class="admin-field full">
+            <label for="logoImage">Logo (shown in the navbar, footer and loading screen)</label>
+            <input type="file" id="logoImage" name="logoImage" accept="image/*">
+            <div class="file-preview"><img src="<%= settings.logoImage %>" alt=""><span style="font-size:13px;color:var(--ink-soft);">Current logo</span></div>
+          </div>
+          <div class="admin-field full">
+            <label for="faviconImage">Favicon (small icon shown in the browser tab)</label>
+            <input type="file" id="faviconImage" name="faviconImage" accept="image/*">
+            <div class="file-preview"><img src="<%= settings.faviconImage %>" alt=""><span style="font-size:13px;color:var(--ink-soft);">Current favicon</span></div>
+          </div>
+          <div class="admin-field full">
+            <label for="heroImage">Homepage Hero Photo</label>
+            <input type="file" id="heroImage" name="heroImage" accept="image/*">
+            <div class="file-preview"><img src="<%= settings.heroImage %>" alt=""><span style="font-size:13px;color:var(--ink-soft);">Current hero photo</span></div>
+          </div>
+        </div>
+        <p style="font-size:13px;color:var(--ink-soft);margin-top:6px;">Leave any of these empty to keep the current file. Uploading a new logo also updates the image used for social-media link previews.</p>
+        <button type="submit" class="admin-btn--primary" style="margin-top:14px;">Save Branding</button>
+      </form>
+    </div>
+  </main>
+</div>
+</body>
+</html>

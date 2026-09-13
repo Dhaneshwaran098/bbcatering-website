@@ -1,0 +1,14 @@
+{
+  "name": "bb-catering",
+  "version": "2.0.0",
+  "description": "BB Catering website with admin dashboard for managing dishes, prices, gallery photos and site settings. Zero external dependencies — runs on plain Node.js.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "hash-password": "node scripts/hash-password.js"
+  },
+  "dependencies": {},
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

@@ -1,0 +1,74 @@
+[
+  {
+    "id": "g001",
+    "image": "https://images.unsplash.com/photo-1545247181-516773cae754?auto=format&fit=crop&w=600&q=80",
+    "caption": "Madurai Mutton Kuzhambu, slow-cooked",
+    "category": "dishes"
+  },
+  {
+    "id": "g002",
+    "image": "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=600&q=80",
+    "caption": "Wedding hall catering setup",
+    "category": "setups"
+  },
+  {
+    "id": "g003",
+    "image": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80",
+    "caption": "Live counter cooking at an event",
+    "category": "prep"
+  },
+  {
+    "id": "g004",
+    "image": "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=600&q=80",
+    "caption": "Seeraga samba mutton biriyani",
+    "category": "dishes"
+  },
+  {
+    "id": "g005",
+    "image": "https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?auto=format&fit=crop&w=600&q=80",
+    "caption": "Chicken chukka, freshly plated",
+    "category": "dishes"
+  },
+  {
+    "id": "g006",
+    "image": "https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&w=600&q=80",
+    "caption": "Buffet spread at a family function",
+    "category": "setups"
+  },
+  {
+    "id": "g007",
+    "image": "https://images.unsplash.com/photo-1615141982883-c7ad0e69fd62?auto=format&fit=crop&w=600&q=80",
+    "caption": "Fresh vanjaram fish fry",
+    "category": "dishes"
+  },
+  {
+    "id": "g008",
+    "image": "https://images.unsplash.com/photo-1506368249639-73a05d6f6488?auto=format&fit=crop&w=600&q=80",
+    "caption": "Stone-ground masala preparation",
+    "category": "prep"
+  },
+  {
+    "id": "g009",
+    "image": "https://images.unsplash.com/photo-1617692855027-33b14f061079?auto=format&fit=crop&w=600&q=80",
+    "caption": "Engagement function catering",
+    "category": "events"
+  },
+  {
+    "id": "g010",
+    "image": "https://images.unsplash.com/photo-1559742811-822873691df8?auto=format&fit=crop&w=600&q=80",
+    "caption": "Prawn masala, coastal style",
+    "category": "dishes"
+  },
+  {
+    "id": "g011",
+    "image": "https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=600&q=80",
+    "caption": "Chefs plating for a large event",
+    "category": "prep"
+  },
+  {
+    "id": "g012",
+    "image": "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=600&q=80",
+    "caption": "Temple festival community feast",
+    "category": "events"
+  }
+]

@@ -1,0 +1,422 @@
+[
+  {
+    "id": "d001",
+    "name": "Mutton Kuzhambu",
+    "category": "Mutton",
+    "price": 450,
+    "unit": "per kg",
+    "spice": 3,
+    "image": "https://images.unsplash.com/photo-1545247181-516773cae754?auto=format&fit=crop&w=600&q=80",
+    "featured": true
+  },
+  {
+    "id": "d002",
+    "name": "Mutton Chukka",
+    "category": "Mutton",
+    "price": 480,
+    "unit": "per kg",
+    "spice": 2,
+    "image": "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?auto=format&fit=crop&w=600&q=80",
+    "featured": true
+  },
+  {
+    "id": "d003",
+    "name": "Mutton Chops Roast",
+    "category": "Mutton",
+    "price": 520,
+    "unit": "per kg",
+    "spice": 2,
+    "image": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80",
+    "featured": false
+  },
+  {
+    "id": "d004",
+    "name": "Mutton Bone Soup",
+    "category": "Mutton",
+    "price": 180,
+    "unit": "per bowl",
+    "spice": 1,
+    "image": "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=600&q=80",
+    "featured": false
+  },
+  {
+    "id": "d005",
+    "name": "Mutton Kola Urundai",
+    "category": "Mutton",
+    "price": 360,
+    "unit": "per plate",
+    "spice": 2,
+    "image": "https://images.unsplash.com/photo-1529042410759-befb1204b468?auto=format&fit=crop&w=600&q=80",
+    "featured": false
+  },
+  {
+    "id": "d006",
+    "name": "Mutton Liver Fry",
+    "category": "Mutton",
+    "price": 420,
+    "unit": "per kg",
+    "spice": 3,
+    "image": "https://images.unsplash.com/photo-1574484284002-952d92456975?auto=format&fit=crop&w=600&q=80",
+    "featured": false
+  },
+  {
+    "id": "d007",
+    "name": "Naadan Chicken Chukka",
+    "category": "Chicken",
+    "price": 320,
+    "unit": "per kg",
+    "spice": 2,
+    "image": "https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?auto=format&fit=crop&w=600&q=80",
+    "featured": true
+  },
+  {
+    "id": "d008",
+    "name": "Chicken 65",
+    "category": "Chicken",
+    "price": 280,
+    "unit": "per kg",
+    "spice": 3,
+    "image": "https://images.unsplash.com/photo-1610057099443-fde8c4d50f91?auto=format&fit=crop&w=600&q=80",
+    "featured": false
+  },
+  {
+    "id": "d009",
+    "name": "Pepper Chicken",
+    "category": "Chicken",
+    "price": 300,
+    "unit": "per kg",
+    "spice": 2,
+    "image": "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=600&q=80",
+    "featured": false
+  },
+  {
+    "id": "d010",
+    "name": "Chicken Kuzhambu",
+    "category": "Chicken",
+    "price": 310,
+    "unit": "per kg",
+    "spice": 2,
+    "image": "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=600&q=80",
+    "featured": false
+  },
+  {
+    "id": "d011",
+    "name": "Chicken Chettinad",
+    "category": "Chicken",
+    "price": 340,
+    "unit": "per kg",
+    "spice": 3,
+    "image": "https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?auto=format&fit=crop&w=600&q=80",
+    "featured": false
+  },
+  {
+    "id": "d012",
+    "name": "Tandoori Chicken",
+    "category": "Chicken",
+    "price": 380,
+    "unit": "per portion",
+    "spice": 1,
+    "image": "https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?auto=format&fit=crop&w=600&q=80",
+    "featured": false
+  },
+  {
+    "id": "d013",
+    "name": "Vanjaram Fish Fry",
+    "category": "Fish & Seafood",
+    "price": 600,
+    "unit": "per kg",
+    "spice": 2,
+    "image": "https://images.unsplash.com/photo-1615141982883-c7ad0e69fd62?auto=format&fit=crop&w=600&q=80",
+    "featured": true
+  },
+  {
+    "id": "d014",
+    "name": "Fish Kuzhambu",
+    "category": "Fish & Seafood",
+    "price": 420,
+    "unit": "per kg",
+    "spice": 2,
+    "image": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=600&q=80",
+    "featured": false
+  },
+  {
+    "id": "d015",
+    "name": "Prawn Masala",
+    "category": "Fish & Seafood",
+    "price": 550,
+    "unit": "per kg",
+    "spice": 3,
+    "image": "https://images.unsplash.com/photo-1559742811-822873691df8?auto=format&fit=crop&w=600&q=80",
+    "featured": false
+  },
+  {
+    "id": "d016",
+    "name": "Crab Masala",
+    "category": "Fish & Seafood",
+    "price": 480,
+    "unit": "per kg",
+    "spice": 3,
+    "image": "https://images.unsplash.com/photo-1535400255456-984241443b29?auto=format&fit=crop&w=600&q=80",
+    "featured": false
+  },
+  {
+    "id": "d017",
+    "name": "Squid Fry",
+    "category": "Fish & Seafood",
+    "price": 420,
+    "unit": "per kg",
+    "spice": 2,
+    "image": "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=600&q=80",
+    "featured": false
+  },
+  {
+    "id": "d018",
+    "name": "Meen Varuval",
+    "category": "Fish & Seafood",
+    "price": 450,
+    "unit": "per kg",
+    "spice": 2,
+    "image": "https://images.unsplash.com/photo-1615141982883-c7ad0e69fd62?auto=format&fit=crop&w=600&q=80",
+    "featured": false
+  },
+  {
+    "id": "d019",
+    "name": "Mutton Paya",
+    "category": "Traditional Madurai",
+    "price": 380,
+    "unit": "per kg",
+    "spice": 2,
+    "image": "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=600&q=80",
+    "featured": false
+  },
+  {
+    "id": "d020",
+    "name": "Kari Dosai",
+    "category": "Traditional Madurai",
+    "price": 120,
+    "unit": "per piece",
+    "spice": 1,
+    "image": "https://images.unsplash.com/photo-1668236543090-82eba5ee5976?auto=format&fit=crop&w=600&q=80",
+    "featured": false
+  },
+  {
+    "id": "d021",
+    "name": "Ratha Poriyal",
+    "category": "Traditional Madurai",
+    "price": 280,
+    "unit": "per kg",
+    "spice": 2,
+    "image": "https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?auto=format&fit=crop&w=600&q=80",
+    "featured": false
+  },
+  {
+    "id": "d022",
+    "name": "Nalli Kaal Soup",
+    "category": "Traditional Madurai",
+    "price": 190,
+    "unit": "per bowl",
+    "spice": 2,
+    "image": "https://images.unsplash.com/photo-1545247181-516773cae754?auto=format&fit=crop&w=600&q=80",
+    "featured": false
+  },
+  {
+    "id": "d023",
+    "name": "Naatu Kozhi Curry",
+    "category": "Traditional Madurai",
+    "price": 400,
+    "unit": "per kg",
+    "spice": 3,
+    "image": "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=600&q=80",
+    "featured": false
+  },
+  {
+    "id": "d024",
+    "name": "Idiyappam with Kuzhambu",
+    "category": "Traditional Madurai",
+    "price": 140,
+    "unit": "per set",
+    "spice": 1,
+    "image": "https://images.unsplash.com/photo-1626132647523-66f5bf380027?auto=format&fit=crop&w=600&q=80",
+    "featured": false
+  },
+  {
+    "id": "d025",
+    "name": "Seeraga Samba Mutton Biriyani",
+    "category": "Biriyani & Rice",
+    "price": 250,
+    "unit": "per plate",
+    "spice": 3,
+    "image": "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=600&q=80",
+    "featured": true
+  },
+  {
+    "id": "d026",
+    "name": "Chicken Dum Biriyani",
+    "category": "Biriyani & Rice",
+    "price": 180,
+    "unit": "per plate",
+    "spice": 2,
+    "image": "https://images.unsplash.com/photo-1633945274405-b6c8069047b0?auto=format&fit=crop&w=600&q=80",
+    "featured": false
+  },
+  {
+    "id": "d027",
+    "name": "Prawn Biriyani",
+    "category": "Biriyani & Rice",
+    "price": 240,
+    "unit": "per plate",
+    "spice": 2,
+    "image": "https://images.unsplash.com/photo-1589302168068-964664d93dc0?auto=format&fit=crop&w=600&q=80",
+    "featured": false
+  },
+  {
+    "id": "d028",
+    "name": "Egg Biriyani",
+    "category": "Biriyani & Rice",
+    "price": 120,
+    "unit": "per plate",
+    "spice": 1,
+    "image": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80",
+    "featured": false
+  },
+  {
+    "id": "d029",
+    "name": "Ghee Rice",
+    "category": "Biriyani & Rice",
+    "price": 110,
+    "unit": "per portion",
+    "spice": 0,
+    "image": "https://images.unsplash.com/photo-1596560548464-f010549b84d7?auto=format&fit=crop&w=600&q=80",
+    "featured": false
+  },
+  {
+    "id": "d030",
+    "name": "Fish Biriyani",
+    "category": "Biriyani & Rice",
+    "price": 220,
+    "unit": "per plate",
+    "spice": 2,
+    "image": "https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=600&q=80",
+    "featured": false
+  },
+  {
+    "id": "d031",
+    "name": "Pepper Mutton Fry",
+    "category": "Starters",
+    "price": 500,
+    "unit": "per kg",
+    "spice": 2,
+    "image": "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?auto=format&fit=crop&w=600&q=80",
+    "featured": false
+  },
+  {
+    "id": "d032",
+    "name": "Chilli Chicken",
+    "category": "Starters",
+    "price": 300,
+    "unit": "per kg",
+    "spice": 3,
+    "image": "https://images.unsplash.com/photo-1525755662778-989d0524087e?auto=format&fit=crop&w=600&q=80",
+    "featured": false
+  },
+  {
+    "id": "d033",
+    "name": "Fish Fingers",
+    "category": "Starters",
+    "price": 350,
+    "unit": "per plate",
+    "spice": 1,
+    "image": "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=600&q=80",
+    "featured": false
+  },
+  {
+    "id": "d034",
+    "name": "Prawn 65",
+    "category": "Starters",
+    "price": 380,
+    "unit": "per plate",
+    "spice": 2,
+    "image": "https://images.unsplash.com/photo-1559847844-5315695dadae?auto=format&fit=crop&w=600&q=80",
+    "featured": false
+  },
+  {
+    "id": "d035",
+    "name": "Chicken Lollipop",
+    "category": "Starters",
+    "price": 320,
+    "unit": "per kg",
+    "spice": 2,
+    "image": "https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=600&q=80",
+    "featured": false
+  },
+  {
+    "id": "d036",
+    "name": "Egg Poriyal Balls",
+    "category": "Starters",
+    "price": 180,
+    "unit": "per plate",
+    "spice": 1,
+    "image": "https://images.unsplash.com/photo-1529042410759-befb1204b468?auto=format&fit=crop&w=600&q=80",
+    "featured": false
+  },
+  {
+    "id": "d037",
+    "name": "Paal Payasam",
+    "category": "Desserts",
+    "price": 50,
+    "unit": "per bowl",
+    "spice": 0,
+    "image": "https://images.unsplash.com/photo-1527515862127-a4fc05baf7a5?auto=format&fit=crop&w=600&q=80",
+    "featured": false
+  },
+  {
+    "id": "d038",
+    "name": "Madurai Jigarthanda",
+    "category": "Desserts",
+    "price": 80,
+    "unit": "per glass",
+    "spice": 0,
+    "image": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=600&q=80",
+    "featured": false
+  },
+  {
+    "id": "d039",
+    "name": "Semiya Payasam",
+    "category": "Desserts",
+    "price": 50,
+    "unit": "per bowl",
+    "spice": 0,
+    "image": "https://images.unsplash.com/photo-1541658016709-82535e94bc69?auto=format&fit=crop&w=600&q=80",
+    "featured": false
+  },
+  {
+    "id": "d040",
+    "name": "Ellu Urundai",
+    "category": "Desserts",
+    "price": 40,
+    "unit": "per portion",
+    "spice": 0,
+    "image": "https://images.unsplash.com/photo-1599785209707-a456fc1337bb?auto=format&fit=crop&w=600&q=80",
+    "featured": false
+  },
+  {
+    "id": "d041",
+    "name": "Carrot Halwa",
+    "category": "Desserts",
+    "price": 60,
+    "unit": "per bowl",
+    "spice": 0,
+    "image": "https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?auto=format&fit=crop&w=600&q=80",
+    "featured": false
+  },
+  {
+    "id": "d042",
+    "name": "Athirasam",
+    "category": "Desserts",
+    "price": 45,
+    "unit": "per piece",
+    "spice": 0,
+    "image": "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=600&q=80",
+    "featured": false
+  }
+]

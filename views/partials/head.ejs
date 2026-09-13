@@ -1,0 +1,63 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title><%= title %> | <%= settings.businessName %></title>
+<meta name="description" content="<%= description %>">
+<%
+  const __pageToPath = { home: '/', about: '/about', services: '/services', menu: '/menu', gallery: '/gallery', contact: '/contact' };
+  const __urlPath = __pageToPath[page] || '/';
+  const __canonical = settings.domain.replace(/\/$/, '') + __urlPath;
+  const __ogType = page === 'home' ? 'website' : 'article';
+%>
+<link rel="icon" type="image/png" sizes="64x64" href="<%= settings.faviconImage %>?v=3.1">
+<link rel="apple-touch-icon" sizes="180x180" href="<%= settings.faviconImage %>?v=3.1">
+<link rel="canonical" href="<%= __canonical %>">
+
+<!-- Open Graph / Facebook / WhatsApp -->
+<meta property="og:type" content="<%= __ogType %>">
+<meta property="og:url" content="<%= __canonical %>">
+<meta property="og:site_name" content="<%= settings.businessName %>">
+<meta property="og:title" content="<%= title %> | <%= settings.businessName %>">
+<meta property="og:description" content="<%= description %>">
+<meta property="og:image" content="<%= settings.domain.replace(/\/$/, '') %><%= settings.logoFullImage %>">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="<%= title %> | <%= settings.businessName %>">
+<meta name="twitter:description" content="<%= description %>">
+<meta name="twitter:image" content="<%= settings.domain.replace(/\/$/, '') %><%= settings.logoFullImage %>">
+
+<% if (page === 'home') { %>
+<!-- Structured data for search engines -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CateringService",
+  "name": "<%- settings.businessName %>",
+  "image": "<%- settings.domain.replace(/\/$/, '') %><%- settings.logoFullImage %>",
+  "@id": "<%- settings.domain.replace(/\/$/, '') %>/#organization",
+  "url": "<%- settings.domain %>/",
+  "telephone": "<%- settings.whatsapp %>",
+  "email": "<%- settings.email %>",
+  "priceRange": "<%- settings.priceRange %>",
+  "servesCuisine": <%- JSON.stringify(settings.cuisines) %>,
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "<%- settings.address %>",
+    "addressLocality": "<%- settings.addressLocality %>",
+    "addressRegion": "<%- settings.addressRegion %>",
+    "addressCountry": "IN"
+  },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+    "opens": "<%- settings.openingHours.opens %>",
+    "closes": "<%- settings.openingHours.closes %>"
+  },
+  "sameAs": ["<%- settings.instagram %>"]
+}
+</script>
+<% } %>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="/css/style.css?v=3.1">
+<script>document.documentElement.classList.add('js-ready');</script>

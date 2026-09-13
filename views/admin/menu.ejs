@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menu &amp; Prices | Admin</title>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="admin-body">
+<div class="admin-shell">
+  <%- include('../partials/adminNav', { active: 'menu' }) %>
+  <main class="admin-main">
+    <div class="admin-header">
+      <div>
+        <h1>Menu &amp; Prices</h1>
+        <p>Changes here appear on the public Menu page immediately.</p>
+      </div>
+    </div>
+
+    <% if (msg) { %><div class="admin-flash"><%= msg %></div><% } %>
+
+    <div class="admin-card">
+      <h2><%= editDish ? `Edit "${editDish.name}"` : 'Add a New Dish' %></h2>
+      <form method="POST" action="<%= editDish ? `/admin/menu/${editDish.id}/update` : '/admin/menu' %>" enctype="multipart/form-data">
+        <div class="admin-form-grid">
+          <div class="admin-field">
+            <label for="name">Dish Name</label>
+            <input type="text" id="name" name="name" value="<%= editDish ? editDish.name : '' %>" placeholder="e.g. Mutton Kuzhambu" required>
+          </div>
+          <div class="admin-field">
+            <label for="category">Category</label>
+            <select id="category" name="category" required>
+              <% categoryOptions.forEach(cat => { %>
+                <option value="<%= cat %>" <%= editDish && editDish.category===cat ? 'selected' : '' %>><%= cat %></option>
+              <% }) %>
+            </select>
+          </div>
+          <div class="admin-field">
+            <label for="price">Price (&#8377;)</label>
+            <input type="number" id="price" name="price" min="0" step="1" value="<%= editDish ? editDish.price : '' %>" placeholder="e.g. 450" required>
+          </div>
+          <div class="admin-field">
+            <label for="unit">Unit</label>
+            <input type="text" id="unit" name="unit" value="<%= editDish ? editDish.unit : 'per kg' %>" placeholder="per kg / per plate / per piece">
+          </div>
+          <div class="admin-field">
+            <label>Spice Level</label>
+            <div class="spice-picker">
+              <% for (let s=0; s<=3; s++) { %>
+                <label><input type="radio" name="spice" value="<%= s %>" <%= (editDish ? editDish.spice : 1) === s ? 'checked' : '' %>> <%= s===0 ? 'Mild' : s %></label>
+              <% } %>
+            </div>
+          </div>
+          <div class="admin-field">
+            <label>&nbsp;</label>
+            <label class="admin-checkbox"><input type="checkbox" name="featured" <%= editDish && editDish.featured ? 'checked' : '' %>> Show on Home page "Popular Dishes"</label>
+          </div>
+          <div class="admin-field full">
+            <label for="image">Dish Photo <% if (editDish) { %>(leave empty to keep current photo)<% } %></label>
+            <input type="file" id="image" name="image" accept="image/*">
+            <% if (editDish) { %>
+              <div class="file-preview"><img src="<%= editDish.image %>" alt=""><span style="font-size:13px;color:var(--ink-soft);">Current photo</span></div>
+            <% } %>
+          </div>
+        </div>
+        <div style="margin-top:20px; display:flex; gap:12px;">
+          <button type="submit" class="admin-btn--primary"><%= editDish ? 'Save Changes' : 'Add Dish' %></button>
+          <% if (editDish) { %><a href="/admin/menu" class="btn btn--dark-outline btn--sm">Cancel</a><% } %>
+        </div>
+      </form>
+    </div>
+
+    <div class="admin-card">
+      <h2>All Dishes (<%= dishes.length %>)</h2>
+      <% if (dishes.length === 0) { %>
+        <p style="color:var(--ink-soft); font-size:14px;">No dishes yet — add your first one above.</p>
+      <% } else { %>
+      <table class="admin-table">
+        <thead><tr><th>Photo</th><th>Name</th><th>Category</th><th>Price</th><th>Featured</th><th>Actions</th></tr></thead>
+        <tbody>
+          <% dishes.forEach(dish => { %>
+          <tr>
+            <td><img src="<%= dish.image %>" class="admin-thumb" alt=""></td>
+            <td><%= dish.name %></td>
+            <td><span class="admin-badge"><%= dish.category %></span></td>
+            <td>&#8377;<%= dish.price %> <span style="color:var(--ink-soft); font-size:12px;">/ <%= dish.unit %></span></td>
+            <td><%= dish.featured ? 'Yes' : '—' %></td>
+            <td>
+              <div class="admin-actions">
+                <a href="/admin/menu/<%= dish.id %>/edit" class="admin-btn admin-btn--edit">Edit</a>
+                <form method="POST" action="/admin/menu/<%= dish.id %>/delete" onsubmit="return confirm('Delete \'<%= dish.name %>\'? This cannot be undone.');" style="display:inline;">
+                  <button type="submit" class="admin-btn admin-btn--delete">Delete</button>
+                </form>
+              </div>
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+      <% } %>
+    </div>
+  </main>
+</div>
+</body>
+</html>

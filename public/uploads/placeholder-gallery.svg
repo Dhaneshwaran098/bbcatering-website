@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 700">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#24140F"/>
+      <stop offset="100%" stop-color="#7A1F1F"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="700" fill="url(#g)"/>
+  <rect x="200" y="280" width="200" height="150" rx="8" fill="none" stroke="#C99A3D" stroke-width="3" opacity="0.7"/>
+  <circle cx="240" cy="320" r="12" fill="#C99A3D" opacity="0.7"/>
+  <path d="M200 400l60-60 40 40 50-70 50 90H200z" fill="#C99A3D" opacity="0.5"/>
+  <text x="300" y="480" text-anchor="middle" font-family="Georgia, serif" font-size="24" fill="#FFF4E3" opacity="0.85">Gallery Photo</text>
+  <text x="300" y="512" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#FFF4E3" opacity="0.6">Upload from Admin &gt; Gallery</text>
+</svg>

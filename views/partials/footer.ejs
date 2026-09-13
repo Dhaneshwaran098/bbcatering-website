@@ -1,0 +1,61 @@
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="brand"><img src="<%= settings.logoImage %>" alt="<%= settings.businessName %> Logo" class="brand-logo"><span class="brand-text"><strong><%= settings.businessName %></strong><span><%= settings.tagline %></span></span></div>
+        <p>For over 7 years, serving memorable food experiences with rich non-veg favorites and unique veg specialties. Visit our restaurant <%= settings.address %>.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Quick Links</h5>
+        <ul>
+          <li><a href="/about">About Us</a></li>
+          <li><a href="/services">Services</a></li>
+          <li><a href="/menu">Menu</a></li>
+          <li><a href="/gallery">Gallery</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <ul>
+          <li><a href="/services">Wedding Catering</a></li>
+          <li><a href="/services">Corporate Events</a></li>
+          <li><a href="/services">Birthday Functions</a></li>
+          <li><a href="/services">Bulk Food Orders</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Get in Touch</h5>
+        <ul>
+          <li><a href="tel:<%= settings.phone %>"><%= settings.phone %></a></li>
+          <li><a href="mailto:<%= settings.email %>"><%= settings.email %></a></li>
+          <li><a href="<%= settings.mapUrl || '/contact' %>" target="_blank" rel="noopener"><%= settings.address %></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; <%= new Date().getFullYear() %> <%= settings.businessName %>. All rights reserved.</span>
+      <div class="social-row">
+        <a href="<%= settings.instagram %>" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+        <a href="<%= settings.facebook %>" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 9h3V6h-3a3 3 0 0 0-3 3v2H8v3h3v6h3v-6h3l1-3h-4V9a1 1 0 0 1 1-1Z"/></svg></a>
+        <a href="<%= settings.youtube %>" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="6" width="20" height="12" rx="3"/><path d="m10 9 5 3-5 3V9Z"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="mobile-actionbar">
+  <a href="tel:<%= settings.phone %>" class="call-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 2 .7 3a2 2 0 0 1-.4 2.1L8 10.3a16 16 0 0 0 6 6l1.5-1.5a2 2 0 0 1 2-.5c1 .3 2 .5 3 .6a2 2 0 0 1 1.5 2Z"/></svg>Call Now</a>
+  <a href="https://wa.me/<%= settings.whatsapp %>" target="_blank" rel="noopener" class="wa-btn"><svg viewBox="0 0 32 32" width="18" height="18" fill="#FFFFFF"><path d="M16 2a13.9 13.9 0 0 0-12 21L2 30l7.2-1.9A13.9 13.9 0 1 0 16 2zm0 25.5c-2.3 0-4.6-.6-6.6-1.8l-.5-.3-4.9 1.3 1.3-4.7-.3-.5A11.5 11.5 0 1 1 16 27.5z"/><path d="M21.5 18.8c-.3-.2-1.8-.9-2-.9-.3-.1-.5-.2-.7.2s-.8 1-1 1.2c-.2.2-.4.2-.7.1a8.6 8.6 0 0 1-2.6-1.6 9.4 9.4 0 0 1-1.8-2.3c-.2-.3 0-.5.1-.7.1-.1.3-.4.5-.5.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.2-.7-1.7-1-2.3-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4s-1.1 1.1-1.1 2.6 1.1 3 1.3 3.2c.1.2 2.2 3.4 5.3 4.7.7.3 1.3.5 1.8.7.7.2 1.4.2 2 .1.6-.1 1.8-.7 2.1-1.4.3-.7.3-1.3.2-1.4-.1-.2-.3-.3-.6-.5z"/></svg>WhatsApp</a>
+</div>
+<a href="https://wa.me/<%= settings.whatsapp %>" target="_blank" rel="noopener" class="wa-float" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 32 32" width="34" height="34" fill="#FFFFFF">
+    <path d="M16 2a13.9 13.9 0 0 0-12 21L2 30l7.2-1.9A13.9 13.9 0 1 0 16 2zm0 25.5c-2.3 0-4.6-.6-6.6-1.8l-.5-.3-4.9 1.3 1.3-4.7-.3-.5A11.5 11.5 0 1 1 16 27.5z"/>
+    <path d="M21.5 18.8c-.3-.2-1.8-.9-2-.9-.3-.1-.5-.2-.7.2s-.8 1-1 1.2c-.2.2-.4.2-.7.1a8.6 8.6 0 0 1-2.6-1.6 9.4 9.4 0 0 1-1.8-2.3c-.2-.3 0-.5.1-.7.1-.1.3-.4.5-.5.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.2-.7-1.7-1-2.3-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4s-1.1 1.1-1.1 2.6 1.1 3 1.3 3.2c.1.2 2.2 3.4 5.3 4.7.7.3 1.3.5 1.8.7.7.2 1.4.2 2 .1.6-.1 1.8-.7 2.1-1.4.3-.7.3-1.3.2-1.4-.1-.2-.3-.3-.6-.5z"/>
+  </svg>
+</a>
+<button class="back-top" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
+
+<div class="scroll-progress"></div>
+
+<script src="/js/main.js?v=3.1"></script>
+

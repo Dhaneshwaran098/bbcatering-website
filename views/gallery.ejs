@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<%- include('partials/head', { title: 'Gallery', description: 'Signature dishes, catering events, food preparation and wedding functions catered by us — browse our gallery.' }) %>
+</head>
+<body>
+<%- include('partials/nav') %>
+
+<section class="page-header">
+  <div class="hero-bg"><div class="ph-photo" style="height:100%;background-image:url('https://images.unsplash.com/photo-1589302168068-964664d93dc0?auto=format&fit=crop&w=1800&q=80')"></div></div>
+  <div class="hero-scrim"></div>
+  <div class="container">
+    <div class="eyebrow">Gallery</div>
+    <h1>A Taste of What We've Served</h1>
+    <p class="crumbs"><a href="/">Home</a> / Gallery</p>
+    <p class="lead">Signature dishes, live cooking, catering setups and functions we've had the pleasure of feeding. Tap any photo for a closer look.</p>
+  </div>
+</section>
+
+<!-- ============ MARQUEE TICKER ============ -->
+<div class="marquee">
+  <div class="marquee-track">
+    <span class="marquee-item">Wedding Catering</span><span class="marquee-item">Mutton &amp; Chicken Specialities</span><span class="marquee-item">Corporate Events</span><span class="marquee-item">Bulk Food Orders</span><span class="marquee-item">Traditional Madurai Recipes</span><span class="marquee-item">Fish &amp; Seafood</span>
+    <span class="marquee-item">Wedding Catering</span><span class="marquee-item">Mutton &amp; Chicken Specialities</span><span class="marquee-item">Corporate Events</span><span class="marquee-item">Bulk Food Orders</span><span class="marquee-item">Traditional Madurai Recipes</span><span class="marquee-item">Fish &amp; Seafood</span>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+
+    <% if (gallery.length === 0) { %>
+      <p class="text-center" style="color:var(--ink-soft);">Photos are being added soon — check back shortly!</p>
+    <% } else { %>
+
+    <div class="g-filters" data-reveal="fade">
+      <button class="g-filter active" data-filter="all">All</button>
+      <button class="g-filter" data-filter="dishes">Signature Dishes</button>
+      <button class="g-filter" data-filter="prep">Food Preparation</button>
+      <button class="g-filter" data-filter="events">Catering Events</button>
+      <button class="g-filter" data-filter="setups">Catering Setups</button>
+    </div>
+
+    <div class="masonry" data-reveal="fade">
+      <% gallery.forEach(g => { %>
+      <div class="g-item" data-category="<%= g.category %>" data-caption="<%= g.caption %>" style="height:<%= 210 + (g.id.length * 13) % 90 %>px;">
+        <div class="ph-photo" style="height:100%;background-image:url('<%= g.image %>')"></div>
+        <div class="g-overlay"><span><%= g.caption %></span></div>
+        <div class="g-overlay"><span class="zoom-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3M11 8v6M8 11h6"/></svg></span></div>
+      </div>
+      <% }) %>
+    </div>
+
+    <% } %>
+  </div>
+</section>
+
+<section class="section--tight">
+  <div class="container">
+    <div class="cta-banner" data-reveal="scale">
+      <div>
+        <h2>Liked what you saw?</h2>
+        <p>Let's plan the same warmth and flavour for your celebration.</p>
+      </div>
+      <div class="cta-actions">
+        <a href="https://wa.me/<%= settings.whatsapp %>" target="_blank" rel="noopener" class="btn btn--gold">Enquire Now</a>
+        <a href="/services" class="btn btn--outline">View Services</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="lightbox">
+  <button class="lightbox-close" aria-label="Close">&times;</button>
+  <div class="lightbox-inner">
+    <div class="ph-photo"></div>
+    <div class="lightbox-caption"></div>
+  </div>
+</div>
+
+<%- include('partials/footer') %>
+</body>
+</html>
