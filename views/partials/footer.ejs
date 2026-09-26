@@ -2,8 +2,14 @@
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <div class="brand"><img src="<%= settings.logoImage %>" alt="<%= settings.businessName %> Logo" class="brand-logo"><span class="brand-text"><strong><%= settings.businessName %></strong><span><%= settings.tagline %></span></span></div>
-        <p>For over 7 years, serving memorable food experiences with rich non-veg favorites and unique veg specialties. Visit our restaurant <%= settings.address %>.</p>
+        <div class="brand">
+          <img src="<%= settings.logoImage %>" alt="<%= settings.businessName %> Logo" class="brand-logo">
+          <div class="brand-text">
+            <strong class="brand-title"><%= settings.businessName %></strong>
+            <span class="brand-quote"><%= settings.tagline %></span>
+          </div>
+        </div>
+        <p>For over 7 years, BB Catering has planned fresh, dependable food service for weddings, corporate events and private celebrations.</p>
       </div>
       <div class="footer-col">
         <h5>Quick Links</h5>
@@ -58,4 +64,3 @@
 <div class="scroll-progress"></div>
 
 <script src="/js/main.js?v=3.1"></script>
-

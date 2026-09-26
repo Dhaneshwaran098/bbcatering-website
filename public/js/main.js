@@ -23,8 +23,22 @@ document.addEventListener('DOMContentLoaded', () => {
   const overlay = document.querySelector('.mobile-overlay');
   const closeBtn = document.querySelector('.mobile-close');
 
-  const openMenu = () => { toggle?.classList.add('open'); panel?.classList.add('open'); overlay?.classList.add('open'); document.body.style.overflow = 'hidden'; };
-  const closeMenu = () => { toggle?.classList.remove('open'); panel?.classList.remove('open'); overlay?.classList.remove('open'); document.body.style.overflow = ''; };
+  const openMenu = () => {
+    toggle?.classList.add('open');
+    toggle?.setAttribute('aria-expanded', 'true');
+    panel?.classList.add('open');
+    overlay?.classList.add('open');
+    overlay?.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  };
+  const closeMenu = () => {
+    toggle?.classList.remove('open');
+    toggle?.setAttribute('aria-expanded', 'false');
+    panel?.classList.remove('open');
+    overlay?.classList.remove('open');
+    overlay?.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  };
 
   toggle?.addEventListener('click', () => { toggle.classList.contains('open') ? closeMenu() : openMenu(); });
   closeBtn?.addEventListener('click', closeMenu);
@@ -259,11 +273,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ---------- Sticky mobile action bar ---------- */
   const mobileBar = document.querySelector('.mobile-actionbar');
-  document.addEventListener('scroll', () => {
+  const checkMobileBar = () => {
     if (!mobileBar) return;
-    if (window.scrollY > 400) mobileBar.classList.add('show');
+    if (window.scrollY > 200) mobileBar.classList.add('show');
     else mobileBar.classList.remove('show');
-  }, { passive: true });
+  };
+  document.addEventListener('scroll', checkMobileBar, { passive: true });
+  checkMobileBar();
 
   const dateInput = document.getElementById('date');
   if (dateInput) {

@@ -153,7 +153,19 @@ const server = http.createServer((req, res) => {
 });
 
 function startServer(portToTry) {
-  server.once('error', (err) => {
+  function onListening() {
+    server.removeListener('error', onError);
+    const actualPort = server.address()?.port || portToTry;
+    let bizName = 'Catering site';
+    try {
+      bizName = require('./lib/store').getSettings().businessName || bizName;
+    } catch (e) { /* settings fallback */ }
+    console.log('\n🍛  ' + bizName + ' server running at http://localhost:' + actualPort);
+    console.log('    Admin login: http://localhost:' + actualPort + '/admin/login\n');
+  }
+
+  function onError(err) {
+    server.removeListener('listening', onListening);
     if (err.code === 'EADDRINUSE') {
       const fallbackPort = Number(portToTry) + 1;
       console.warn(`\n⚠️  Port ${portToTry} is already in use. Retrying on port ${fallbackPort}...`);
@@ -161,16 +173,11 @@ function startServer(portToTry) {
     } else {
       console.error('Server error:', err);
     }
-  });
+  }
 
-  server.listen(portToTry, () => {
-    let bizName = 'Catering site';
-    try {
-      bizName = require('./lib/store').getSettings().businessName || bizName;
-    } catch (e) { /* settings fallback */ }
-    console.log('\n🍛  ' + bizName + ' server running at http://localhost:' + portToTry);
-    console.log('    Admin login: http://localhost:' + portToTry + '/admin/login\n');
-  });
+  server.once('error', onError);
+  server.once('listening', onListening);
+  server.listen(portToTry);
 }
 
 startServer(PORT);

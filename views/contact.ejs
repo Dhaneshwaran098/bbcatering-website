@@ -13,7 +13,7 @@
     <div class="eyebrow">Contact &amp; Enquiries</div>
     <h1>Let's Plan Your Celebration</h1>
     <p class="crumbs"><a href="/">Home</a> / Contact</p>
-    <p class="lead">Reach out over WhatsApp, call us directly, or visit our restaurant <%= settings.address %> to taste before booking!</p>
+    <p class="lead">Reach out over WhatsApp, call us directly, or visit us at <%= settings.address %> to discuss your catering plans.</p>
   </div>
 </section>
 
@@ -39,7 +39,7 @@
       </div>
       <div class="info-card" data-reveal="fade">
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></div>
-        <div><h4>Restaurant &amp; Tasting</h4><a href="<%= settings.mapUrl || '/contact' %>" target="_blank" rel="noopener"><%= settings.address %></a><p style="color:var(--orange);font-weight:600;margin-top:4px;">Taste before booking!</p></div>
+        <div><h4>Visit Us</h4><a href="<%= settings.mapUrl || '/contact' %>" target="_blank" rel="noopener"><%= settings.address %></a><p style="color:var(--orange);font-weight:600;margin-top:4px;">Meet our catering team</p></div>
       </div>
       <div class="info-card" data-reveal="fade">
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></div>
@@ -74,7 +74,7 @@
               <option>Birthday / Private Event</option>
               <option>Corporate Event</option>
               <option>Traditional / Cultural Function</option>
-              <option>Food Tasting Session</option>
+              <option>Menu Consultation</option>
               <option>Bulk Food Order</option>
             </select>
           </div>
@@ -96,7 +96,7 @@
       </div>
       <a href="<%= settings.mapUrl || ('https://maps.google.com/?q=' + encodeURIComponent(settings.address)) %>" target="_blank" rel="noopener" class="btn btn--dark-outline btn--block" style="margin-top:20px;">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-        Get Directions to Restaurant
+        Get Directions
       </a>
       <div style="margin-top:26px;">
         <h4 style="font-size:15px; color:var(--brown); margin-bottom:14px;">Follow Us</h4>
