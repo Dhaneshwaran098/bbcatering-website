@@ -6,7 +6,7 @@
     "price": 450,
     "unit": "per kg",
     "spice": 3,
-    "image": "https://images.unsplash.com/photo-1545247181-516773cae754?auto=format&fit=crop&w=600&q=80",
+    "image": "/uploads/dishes/mutton-kuzhambu.jpg",
     "featured": true
   },
   {
@@ -16,7 +16,7 @@
     "price": 480,
     "unit": "per kg",
     "spice": 2,
-    "image": "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?auto=format&fit=crop&w=600&q=80",
+    "image": "/uploads/dishes/mutton-chukka.jpg",
     "featured": true
   },
   {
@@ -66,7 +66,7 @@
     "price": 320,
     "unit": "per kg",
     "spice": 2,
-    "image": "https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?auto=format&fit=crop&w=600&q=80",
+    "image": "/uploads/dishes/naadan-chicken-chukka.jpg",
     "featured": true
   },
   {
@@ -76,8 +76,8 @@
     "price": 280,
     "unit": "per kg",
     "spice": 3,
-    "image": "https://images.unsplash.com/photo-1610057099443-fde8c4d50f91?auto=format&fit=crop&w=600&q=80",
-    "featured": false
+    "image": "/uploads/dishes/chicken-65.jpg",
+    "featured": true
   },
   {
     "id": "d009",
@@ -236,8 +236,8 @@
     "price": 140,
     "unit": "per set",
     "spice": 1,
-    "image": "https://images.unsplash.com/photo-1626132647523-66f5bf380027?auto=format&fit=crop&w=600&q=80",
-    "featured": false
+    "image": "/uploads/dishes/idiyappam-kuzhambu.jpg",
+    "featured": true
   },
   {
     "id": "d025",
@@ -246,7 +246,7 @@
     "price": 250,
     "unit": "per plate",
     "spice": 3,
-    "image": "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=600&q=80",
+    "image": "/uploads/dishes/wedding-biriyani.jpg",
     "featured": true
   },
   {
@@ -256,8 +256,8 @@
     "price": 180,
     "unit": "per plate",
     "spice": 2,
-    "image": "https://images.unsplash.com/photo-1633945274405-b6c8069047b0?auto=format&fit=crop&w=600&q=80",
-    "featured": false
+    "image": "/uploads/dishes/wedding-biriyani.jpg",
+    "featured": true
   },
   {
     "id": "d027",
@@ -306,8 +306,8 @@
     "price": 500,
     "unit": "per kg",
     "spice": 2,
-    "image": "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?auto=format&fit=crop&w=600&q=80",
-    "featured": false
+    "image": "/uploads/dishes/mutton-chukka.jpg",
+    "featured": true
   },
   {
     "id": "d032",
@@ -316,8 +316,8 @@
     "price": 300,
     "unit": "per kg",
     "spice": 3,
-    "image": "https://images.unsplash.com/photo-1525755662778-989d0524087e?auto=format&fit=crop&w=600&q=80",
-    "featured": false
+    "image": "/uploads/dishes/chicken-65.jpg",
+    "featured": true
   },
   {
     "id": "d033",
@@ -346,8 +346,8 @@
     "price": 320,
     "unit": "per kg",
     "spice": 2,
-    "image": "https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=600&q=80",
-    "featured": false
+    "image": "/uploads/dishes/starter-skewers.jpg",
+    "featured": true
   },
   {
     "id": "d036",
@@ -418,5 +418,55 @@
     "spice": 0,
     "image": "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=600&q=80",
     "featured": false
+  },
+  {
+    "id": "d043",
+    "name": "Grand Banana Leaf Wedding Feast",
+    "category": "Traditional Madurai",
+    "price": 350,
+    "unit": "per leaf meal",
+    "spice": 2,
+    "image": "/uploads/dishes/banana-leaf-feast.jpg",
+    "featured": true
+  },
+  {
+    "id": "d044",
+    "name": "Heart-in Idly & Beetroot Poori Breakfast",
+    "category": "Traditional Madurai",
+    "price": 160,
+    "unit": "per set",
+    "spice": 1,
+    "image": "/uploads/dishes/heart-idly-breakfast.jpg",
+    "featured": true
+  },
+  {
+    "id": "d045",
+    "name": "Traditional Sweet Kali & Halwa",
+    "category": "Desserts",
+    "price": 70,
+    "unit": "per portion",
+    "spice": 0,
+    "image": "/uploads/dishes/sweet-kali-halwa.jpg",
+    "featured": true
+  },
+  {
+    "id": "d046",
+    "name": "Wedding Poriyal & Kootu",
+    "category": "Traditional Madurai",
+    "price": 90,
+    "unit": "per portion",
+    "spice": 1,
+    "image": "/uploads/dishes/wedding-poriyal.jpg",
+    "featured": false
+  },
+  {
+    "id": "d047",
+    "name": "Madurai Parotta & Chukka Combo",
+    "category": "Traditional Madurai",
+    "price": 220,
+    "unit": "per set",
+    "spice": 2,
+    "image": "/uploads/dishes/parotta-pack.jpg",
+    "featured": true
   }
 ]

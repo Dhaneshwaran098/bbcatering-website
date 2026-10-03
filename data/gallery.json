@@ -1,74 +1,116 @@
 [
   {
     "id": "g001",
-    "image": "https://images.unsplash.com/photo-1545247181-516773cae754?auto=format&fit=crop&w=600&q=80",
-    "caption": "Madurai Mutton Kuzhambu, slow-cooked",
+    "image": "/uploads/gallery/gallery_biriyani.jpg",
+    "caption": "Traditional Seeraga Samba Wedding Biriyani with Raitha",
     "category": "dishes"
   },
   {
     "id": "g002",
-    "image": "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=600&q=80",
-    "caption": "Wedding hall catering setup",
-    "category": "setups"
+    "image": "/uploads/gallery/gallery_feast_spread.jpg",
+    "caption": "Authentic Grand Banana Leaf Wedding Feast",
+    "category": "dishes"
   },
   {
     "id": "g003",
-    "image": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80",
-    "caption": "Live counter cooking at an event",
-    "category": "prep"
+    "image": "/uploads/gallery/gallery_heart_idly.jpg",
+    "caption": "Special Heart-in Idly & Beetroot Poori Breakfast Spread",
+    "category": "dishes"
   },
   {
     "id": "g004",
-    "image": "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=600&q=80",
-    "caption": "Seeraga samba mutton biriyani",
+    "image": "/uploads/gallery/gallery_chicken_65.jpg",
+    "caption": "Crispy Golden Chicken 65 on Fresh Banana Leaf",
     "category": "dishes"
   },
   {
     "id": "g005",
-    "image": "https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?auto=format&fit=crop&w=600&q=80",
-    "caption": "Chicken chukka, freshly plated",
+    "image": "/uploads/gallery/gallery_sweet_kali.jpg",
+    "caption": "Hot Traditional Sweet Kali served from Catering Buckets",
     "category": "dishes"
   },
   {
     "id": "g006",
-    "image": "https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&w=600&q=80",
-    "caption": "Buffet spread at a family function",
-    "category": "setups"
+    "image": "/uploads/gallery/gallery_poriyal.jpg",
+    "caption": "Fresh Coconut Tempered Wedding Poriyal",
+    "category": "dishes"
   },
   {
     "id": "g007",
-    "image": "https://images.unsplash.com/photo-1615141982883-c7ad0e69fd62?auto=format&fit=crop&w=600&q=80",
-    "caption": "Fresh vanjaram fish fry",
+    "image": "/uploads/gallery/gallery_idiyappam_dinner.jpg",
+    "caption": "Steamed Idiyappam & Rumali Roti Wedding Dinner Spread",
     "category": "dishes"
   },
   {
     "id": "g008",
-    "image": "https://images.unsplash.com/photo-1506368249639-73a05d6f6488?auto=format&fit=crop&w=600&q=80",
-    "caption": "Stone-ground masala preparation",
-    "category": "prep"
+    "image": "/uploads/gallery/gallery_starter_skewers.jpg",
+    "caption": "Succulent Chukka Starter Skewers",
+    "category": "dishes"
   },
   {
     "id": "g009",
-    "image": "https://images.unsplash.com/photo-1617692855027-33b14f061079?auto=format&fit=crop&w=600&q=80",
-    "caption": "Engagement function catering",
+    "image": "/uploads/gallery/gallery_couple_feast.jpg",
+    "caption": "Bride & Groom Enjoying the BB Catering Wedding Feast",
     "category": "events"
   },
   {
     "id": "g010",
-    "image": "https://images.unsplash.com/photo-1559742811-822873691df8?auto=format&fit=crop&w=600&q=80",
-    "caption": "Prawn masala, coastal style",
-    "category": "dishes"
+    "image": "/uploads/gallery/gallery_guests_banquet.jpg",
+    "caption": "Wedding Guests Savoring the Grand Traditional Spread",
+    "category": "events"
   },
   {
     "id": "g011",
-    "image": "https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=600&q=80",
-    "caption": "Chefs plating for a large event",
-    "category": "prep"
+    "image": "/uploads/gallery/gallery_banquet_hall.jpg",
+    "caption": "Grand Banquet Dining Setup with Banana Leaf Placings",
+    "category": "events"
   },
   {
     "id": "g012",
-    "image": "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=600&q=80",
-    "caption": "Temple festival community feast",
+    "image": "/uploads/gallery/gallery_community_feast.jpg",
+    "caption": "Festive Celebration Dining at Wedding Hall",
     "category": "events"
+  },
+  {
+    "id": "g013",
+    "image": "/uploads/gallery/gallery_menu_board.jpg",
+    "caption": "Official BB Catering Wedding Menu Display & Hall",
+    "category": "setups"
+  },
+  {
+    "id": "g014",
+    "image": "/uploads/gallery/gallery_business_card.jpg",
+    "caption": "BB Catering Service & Madurai Koorai Kadai Venues",
+    "category": "setups"
+  },
+  {
+    "id": "g015",
+    "image": "/uploads/gallery/gallery_serving_team.jpg",
+    "caption": "BB Catering Uniformed Crew & Serving Team",
+    "category": "setups"
+  },
+  {
+    "id": "g016",
+    "image": "/uploads/gallery/gallery_live_serving.jpg",
+    "caption": "Live Table Service by Uniformed BB Catering Staff",
+    "category": "setups"
+  },
+  {
+    "id": "g017",
+    "image": "/uploads/gallery/gallery_kitchen_prep.jpg",
+    "caption": "Live Kitchen Preparation of Flaky Parottas & Chicken 65",
+    "category": "prep"
+  },
+  {
+    "id": "g018",
+    "image": "/uploads/gallery/gallery_meal_packaging.jpg",
+    "caption": "Hygienic Bulk Meal Box Packaging & Quality Check",
+    "category": "prep"
+  },
+  {
+    "id": "g019",
+    "image": "/uploads/gallery/gallery_delivery_fleet.jpg",
+    "caption": "Catering Logistics Fleet Loaded for Timely Delivery",
+    "category": "prep"
   }
 ]
