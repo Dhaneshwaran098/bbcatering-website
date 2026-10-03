@@ -54,6 +54,42 @@
   </div>
 </section>
 
+<!-- ============ LIVE ACTION & VIDEO REELS ============ -->
+<% if (typeof videos !== 'undefined' && videos && videos.length > 0) { %>
+<section class="section section--brown" data-reveal="fade">
+  <div class="container">
+    <div class="section-head center">
+      <div class="eyebrow">Behind The Scenes</div>
+      <h2>Live Action &amp; Kitchen Reels</h2>
+      <p>Watch our master chefs in action — from live iron-tawa parotta making to grand handi biriyani mixing and hygienic meal packaging.</p>
+    </div>
+
+    <div class="video-reels-grid">
+      <% videos.forEach(v => { %>
+      <div class="video-card" data-video="<%= v.videoUrl %>" data-title="<%= v.title %>" data-desc="<%= v.description %>" data-reveal="fade">
+        <div class="video-thumb-wrap">
+          <img src="<%= v.posterUrl %>" alt="<%= v.title %>" loading="lazy">
+          <div class="video-scrim"></div>
+          <div class="duration-pill">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+            <%= v.duration %>
+          </div>
+          <div class="play-badge">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+          <div class="video-info">
+            <span class="video-tag"><%= v.category.replace('-', ' ') %></span>
+            <h3><%= v.title %></h3>
+            <p><%= v.description %></p>
+          </div>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+  </div>
+</section>
+<% } %>
+
 <section class="section--tight">
   <div class="container">
     <div class="cta-banner" data-reveal="scale">
@@ -69,11 +105,26 @@
   </div>
 </section>
 
+<!-- Photo Lightbox -->
 <div class="lightbox">
   <button class="lightbox-close" aria-label="Close">&times;</button>
   <div class="lightbox-inner">
     <div class="ph-photo"></div>
     <div class="lightbox-caption"></div>
+  </div>
+</div>
+
+<!-- Video Lightbox Player Modal -->
+<div class="video-lightbox">
+  <div class="video-lightbox-container">
+    <button class="video-lightbox-close" aria-label="Close video player">&times;</button>
+    <div class="video-player-frame">
+      <video controls playsinline preload="metadata"></video>
+    </div>
+    <div class="video-lightbox-caption">
+      <h4></h4>
+      <p></p>
+    </div>
   </div>
 </div>
 

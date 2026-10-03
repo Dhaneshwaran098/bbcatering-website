@@ -192,6 +192,48 @@
   </div>
 </section>
 
+<!-- ============ LIVE ACTION REELS PREVIEW ============ -->
+<% if (typeof videosPreview !== 'undefined' && videosPreview && videosPreview.length > 0) { %>
+<section class="section section--brown" data-reveal="fade">
+  <div class="container">
+    <div class="section-head center">
+      <div class="eyebrow">Behind The Scenes</div>
+      <h2>Live Action &amp; Kitchen Reels</h2>
+      <p>Real behind-the-scenes footage of live catering preparation, handi biriyani, and artisan parotta cooking.</p>
+    </div>
+
+    <div class="video-reels-grid">
+      <% videosPreview.forEach(v => { %>
+      <div class="video-card" data-video="<%= v.videoUrl %>" data-title="<%= v.title %>" data-desc="<%= v.description %>" data-reveal="fade">
+        <div class="video-thumb-wrap">
+          <img src="<%= v.posterUrl %>" alt="<%= v.title %>" loading="lazy">
+          <div class="video-scrim"></div>
+          <div class="duration-pill">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+            <%= v.duration %>
+          </div>
+          <div class="play-badge">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+          <div class="video-info">
+            <span class="video-tag"><%= v.category.replace('-', ' ') %></span>
+            <h3><%= v.title %></h3>
+            <p><%= v.description %></p>
+          </div>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+
+    <div class="text-center" style="margin-top:36px;">
+      <a href="/gallery" class="btn btn--gold">Watch All Video Reels
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+<% } %>
+
 <!-- ============ TESTIMONIALS ============ -->
 <section class="section--tight">
   <div class="container">
@@ -238,6 +280,20 @@
     </div>
   </div>
 </section>
+
+<!-- Video Lightbox Player Modal -->
+<div class="video-lightbox">
+  <div class="video-lightbox-container">
+    <button class="video-lightbox-close" aria-label="Close video player">&times;</button>
+    <div class="video-player-frame">
+      <video controls playsinline preload="metadata"></video>
+    </div>
+    <div class="video-lightbox-caption">
+      <h4></h4>
+      <p></p>
+    </div>
+  </div>
+</div>
 
 <%- include('partials/footer') %>
 </body>

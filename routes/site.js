@@ -20,6 +20,7 @@ function groupByCategory(dishes) {
 router.get('/', (req, res) => {
   const dishes = store.getDishes();
   const gallery = store.getGallery();
+  const videos = store.getVideos();
   const settings = store.getSettings();
   const featured = dishes.filter((d) => d.featured).slice(0, 4);
   const popular = featured.length ? featured : dishes.slice(0, 4);
@@ -27,7 +28,8 @@ router.get('/', (req, res) => {
     page: 'home',
     settings,
     popularDishes: popular,
-    galleryPreview: gallery.slice(0, 4),
+    galleryPreview: gallery.slice(0, 6),
+    videosPreview: videos.slice(0, 3),
   });
 });
 
@@ -55,11 +57,13 @@ router.get('/menu', (req, res) => {
 
 router.get('/gallery', (req, res) => {
   const gallery = store.getGallery();
+  const videos = store.getVideos();
   const categories = [...new Set(gallery.map((g) => g.category))];
   res.render('gallery', {
     page: 'gallery',
     settings: store.getSettings(),
     gallery,
+    videos,
     categories,
   });
 });

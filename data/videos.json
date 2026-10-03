@@ -1,0 +1,47 @@
+[
+  {
+    "id": "v001",
+    "title": "Master Chef Wedding Biriyani Dum",
+    "videoUrl": "/uploads/videos/live-wedding-biriyani.mp4",
+    "posterUrl": "/uploads/videos/posters/poster_biriyani.jpg",
+    "category": "live-cooking",
+    "duration": "8s",
+    "description": "Steaming hot traditional wedding biriyani mixed fresh in giant handi cauldron."
+  },
+  {
+    "id": "v002",
+    "title": "Madurai Bun Parotta Live Sizzle",
+    "videoUrl": "/uploads/videos/madurai-bun-parotta-tawa.mp4",
+    "posterUrl": "/uploads/videos/posters/poster_parotta_tawa.jpg",
+    "category": "live-cooking",
+    "duration": "14s",
+    "description": "Flaky golden bun parottas sizzling on the massive iron hotplate."
+  },
+  {
+    "id": "v003",
+    "title": "Master Chef Parotta Hand Layering",
+    "videoUrl": "/uploads/videos/parotta-chef-hand-clapping.mp4",
+    "posterUrl": "/uploads/videos/posters/poster_parotta_clap.jpg",
+    "category": "kitchen-prep",
+    "duration": "12s",
+    "description": "Artisan chef hand-clapping and layering piping hot flaky parottas."
+  },
+  {
+    "id": "v004",
+    "title": "Aromatic Wedding Kurma Cauldron",
+    "videoUrl": "/uploads/videos/steaming-wedding-kurma.mp4",
+    "posterUrl": "/uploads/videos/posters/poster_kurma.jpg",
+    "category": "kitchen-prep",
+    "duration": "4s",
+    "description": "Rich slow-cooked wedding kurma simmering with aromatic whole spices."
+  },
+  {
+    "id": "v005",
+    "title": "Hygienic Bulk Meal Box Packaging",
+    "videoUrl": "/uploads/videos/bulk-meal-box-packaging.mp4",
+    "posterUrl": "/uploads/videos/posters/poster_packaging.jpg",
+    "category": "packaging",
+    "duration": "20s",
+    "description": "Systematic bulk meal box assembly and quality check for catering dispatch."
+  }
+]

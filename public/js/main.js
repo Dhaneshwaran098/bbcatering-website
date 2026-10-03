@@ -124,8 +124,52 @@ document.addEventListener('DOMContentLoaded', () => {
   lightbox?.addEventListener('click', (e) => {
     if (e.target === lightbox) { lightbox.classList.remove('open'); document.body.style.overflow = ''; }
   });
+
+  /* ---------- Video lightbox player ---------- */
+  const videoLightbox = document.querySelector('.video-lightbox');
+  const videoPlayer = document.querySelector('.video-player-frame video');
+  const videoTitleEl = document.querySelector('.video-lightbox-caption h4');
+  const videoDescEl = document.querySelector('.video-lightbox-caption p');
+  const videoCloseBtn = document.querySelector('.video-lightbox-close');
+
+  const closeVideoModal = () => {
+    if (!videoLightbox) return;
+    videoLightbox.classList.remove('open');
+    if (videoPlayer) {
+      videoPlayer.pause();
+      videoPlayer.src = '';
+    }
+    document.body.style.overflow = '';
+  };
+
+  document.querySelectorAll('.video-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const videoSrc = card.getAttribute('data-video');
+      const title = card.getAttribute('data-title') || '';
+      const desc = card.getAttribute('data-desc') || '';
+      if (!videoLightbox || !videoPlayer || !videoSrc) return;
+
+      videoPlayer.src = videoSrc;
+      if (videoTitleEl) videoTitleEl.textContent = title;
+      if (videoDescEl) videoDescEl.textContent = desc;
+      videoLightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      videoPlayer.play().catch(() => {});
+    });
+  });
+
+  videoCloseBtn?.addEventListener('click', closeVideoModal);
+  videoLightbox?.addEventListener('click', (e) => {
+    if (e.target === videoLightbox) closeVideoModal();
+  });
+
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') { lightbox?.classList.remove('open'); document.body.style.overflow = ''; closeMenu(); }
+    if (e.key === 'Escape') {
+      lightbox?.classList.remove('open');
+      closeVideoModal();
+      document.body.style.overflow = '';
+      closeMenu();
+    }
   });
 
   /* ---------- Enquiry form -> WhatsApp handoff ---------- */
