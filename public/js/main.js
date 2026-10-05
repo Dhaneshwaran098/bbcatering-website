@@ -104,6 +104,53 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  /* ---------- Gabriel JM Style Celebration Menu Tabs ---------- */
+  const gjmTabs = document.querySelectorAll('.gjm-tab-btn');
+  const gjmPanels = document.querySelectorAll('.gjm-menu-panel');
+  gjmTabs.forEach((tab, index) => {
+    tab.addEventListener('click', () => {
+      gjmTabs.forEach(t => {
+        t.classList.remove('active');
+        t.setAttribute('aria-selected', 'false');
+      });
+      gjmPanels.forEach(p => p.classList.remove('active'));
+
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected', 'true');
+      const targetPanel = document.getElementById(`gjm-panel-${index}`);
+      if (targetPanel) {
+        targetPanel.classList.add('active');
+      }
+
+      // Smoothly scroll active tab into view in horizontal scroller
+      tab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    });
+  });
+
+  /* ---------- Gabriel JM Style Mobile Menu Accordion ---------- */
+  const gjmAccHeaders = document.querySelectorAll('.gjm-acc-header');
+  gjmAccHeaders.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const targetId = btn.getAttribute('data-acc-target');
+      const targetBody = document.getElementById(targetId);
+      const isAlreadyOpen = btn.classList.contains('active');
+
+      // Close all accordion panels
+      gjmAccHeaders.forEach(h => {
+        h.classList.remove('active');
+        h.setAttribute('aria-expanded', 'false');
+      });
+      document.querySelectorAll('.gjm-acc-body').forEach(b => b.classList.remove('open'));
+
+      // If it wasn't already open, open it
+      if (!isAlreadyOpen && targetBody) {
+        btn.classList.add('active');
+        btn.setAttribute('aria-expanded', 'true');
+        targetBody.classList.add('open');
+      }
+    });
+  });
+
   /* ---------- Gallery lightbox ---------- */
   const lightbox = document.querySelector('.lightbox');
   const lightboxImg = document.querySelector('.lightbox-inner .ph-photo');

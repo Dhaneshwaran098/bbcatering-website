@@ -101,36 +101,8 @@
   </div>
 </section>
 
-<!-- ============ POPULAR DISHES PREVIEW (live from admin) ============ -->
-<section class="section">
-  <div class="container">
-    <div class="section-head center">
-      <div class="eyebrow">Our Menu</div>
-      <h2>Popular Choices for Every Gathering</h2>
-      <p>Explore a selection of dishes that can be included in a menu tailored to your occasion.</p>
-    </div>
-    <div class="grid grid--4" data-stagger>
-      <% popularDishes.forEach(dish => { %>
-      <div class="card dish-card" data-reveal="scale">
-        <div class="card-media"><div class="ph-photo" style="background-image:url('<%= dish.image %>')"></div><span class="card-tag"><%= dish.category %></span></div>
-        <div class="card-body">
-          <div>
-            <h4><%= dish.name %></h4>
-            <div class="spice">
-              <% for (let i=0;i<4;i++) { %><span class="<%= i < dish.spice ? 'on' : '' %>"></span><% } %>
-            </div>
-          </div>
-        </div>
-      </div>
-      <% }) %>
-    </div>
-    <div class="text-center" style="margin-top:44px;">
-      <a href="/menu" class="btn btn--dark-outline">See Full Menu
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </a>
-    </div>
-  </div>
-</section>
+<!-- ============ GABRIEL JM STYLE CELEBRATION MENU SHOWCASE ============ -->
+<%- include('partials/menuShowcase', { menus: menus, settings: settings }) %>
 
 <!-- ============ SERVICES PREVIEW ============ -->
 <section class="section section--brown" data-reveal="fade">

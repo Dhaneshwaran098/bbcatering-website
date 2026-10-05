@@ -19,6 +19,7 @@ function groupByCategory(dishes) {
 
 router.get('/', (req, res) => {
   const dishes = store.getDishes();
+  const menus = store.getMenus();
   const gallery = store.getGallery();
   const videos = store.getVideos();
   const settings = store.getSettings();
@@ -27,6 +28,7 @@ router.get('/', (req, res) => {
   res.render('index', {
     page: 'home',
     settings,
+    menus,
     popularDishes: popular,
     galleryPreview: gallery.slice(0, 6),
     videosPreview: videos.slice(0, 3),
@@ -43,6 +45,7 @@ router.get('/services', (req, res) => {
 
 router.get('/menu', (req, res) => {
   const dishes = store.getDishes();
+  const menus = store.getMenus();
   const grouped = groupByCategory(dishes);
   const categories = CATEGORY_ORDER.filter((c) => grouped[c] && grouped[c].length);
   // include any custom categories not in the fixed order, at the end
@@ -50,6 +53,7 @@ router.get('/menu', (req, res) => {
   res.render('menu', {
     page: 'menu',
     settings: store.getSettings(),
+    menus,
     categories,
     grouped,
   });

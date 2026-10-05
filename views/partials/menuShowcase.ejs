@@ -1,0 +1,156 @@
+<!-- =========================================================
+     GABRIEL JM EVENTS STYLE — CELEBRATION MENU SHOWCASE
+     ========================================================= -->
+<section class="gjm-menu-section" id="celebration-menus">
+  <div class="container">
+    
+    <!-- Section Header -->
+    <div class="gjm-menu-header" data-reveal="fade">
+      <div class="eyebrow">Our Special Menus</div>
+      <h2>Menus Made for Every Celebration</h2>
+      <p>Explore our signature multi-course catering spreads. Each menu is thoughtfully designed with authentic flavors, live counters, and complete dining courses.</p>
+    </div>
+
+    <% if (menus && menus.length > 0) { %>
+
+      <!-- Desktop / Tablet Tabs -->
+      <div class="gjm-tabs-container" data-reveal="fade">
+        <div class="gjm-tabs-wrapper" role="tablist" aria-label="Celebration Menus">
+          <% menus.forEach((m, idx) => { %>
+            <button 
+              class="gjm-tab-btn <%= idx === 0 ? 'active' : '' %>" 
+              role="tab" 
+              aria-selected="<%= idx === 0 ? 'true' : 'false' %>"
+              aria-controls="gjm-panel-<%= idx %>"
+              id="gjm-tab-<%= idx %>"
+              data-menu-index="<%= idx %>"
+            >
+              <%= m.title %>
+            </button>
+          <% }) %>
+        </div>
+      </div>
+
+      <!-- Desktop / Tablet Menu Board Panels -->
+      <div class="gjm-board-wrapper" data-reveal="scale">
+        <% menus.forEach((m, idx) => { 
+             const half = Math.ceil(m.items.length / 2);
+             const col1 = m.items.slice(0, half);
+             const col2 = m.items.slice(half);
+        %>
+          <div 
+            class="gjm-menu-panel <%= idx === 0 ? 'active' : '' %>" 
+            id="gjm-panel-<%= idx %>"
+            role="tabpanel"
+            aria-labelledby="gjm-tab-<%= idx %>"
+          >
+            <div class="gjm-menu-board">
+              
+              <!-- Board Header -->
+              <div class="gjm-board-header">
+                <div class="left-info">
+                  <span class="gjm-board-title"><%= m.title %></span>
+                  <% if (m.name) { %>
+                    <span class="gjm-board-subtitle">— <%= m.name %></span>
+                  <% } %>
+                </div>
+                <div>
+                  <span class="gjm-badge-tag <%= m.type === 'Vegetarian' ? 'veg' : '' %>">
+                    <%= m.badge || m.type %>
+                  </span>
+                </div>
+              </div>
+
+              <!-- Board Grid: Numbered Items (2 cols) + Image (right) -->
+              <div class="gjm-board-grid">
+                <div class="gjm-items-grid">
+                  <!-- Column 1 -->
+                  <div class="gjm-col">
+                    <% col1.forEach((item, i) => { %>
+                      <div class="gjm-item">
+                        <span class="gjm-item-number"><%= i + 1 %>.</span>
+                        <span class="gjm-item-text"><%= item %></span>
+                      </div>
+                    <% }) %>
+                  </div>
+
+                  <!-- Column 2 -->
+                  <div class="gjm-col">
+                    <% col2.forEach((item, i) => { %>
+                      <div class="gjm-item">
+                        <span class="gjm-item-number"><%= half + i + 1 %>.</span>
+                        <span class="gjm-item-text"><%= item %></span>
+                      </div>
+                    <% }) %>
+                  </div>
+                </div>
+
+                <!-- Featured Dish Image -->
+                <div class="gjm-image-wrap">
+                  <div class="gjm-image-card">
+                    <img src="<%= m.image %>" alt="<%= m.title %> - <%= m.name %>" loading="lazy">
+                    <div class="gjm-image-overlay">
+                      <span><%= m.name || m.title %></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        <% }) %>
+      </div>
+
+      <!-- Mobile Accordion View -->
+      <div class="gjm-mobile-accordion">
+        <% menus.forEach((m, idx) => { %>
+          <div class="gjm-acc-item">
+            <button 
+              class="gjm-acc-header <%= idx === 0 ? 'active' : '' %>"
+              data-acc-target="gjm-acc-body-<%= idx %>"
+              aria-expanded="<%= idx === 0 ? 'true' : 'false' %>"
+            >
+              <span><%= m.title %> <% if (m.name) { %><small style="font-weight:400;color:#9ca3af;text-transform:none;"> — <%= m.name %></small><% } %></span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="gjm-acc-body <%= idx === 0 ? 'open' : '' %>" id="gjm-acc-body-<%= idx %>">
+              <ol class="gjm-acc-list">
+                <% m.items.forEach((item, i) => { %>
+                  <li><b><%= i + 1 %>.</b> <span><%= item %></span></li>
+                <% }) %>
+              </ol>
+              <div class="gjm-acc-image">
+                <img src="<%= m.image %>" alt="<%= m.title %>" loading="lazy">
+              </div>
+            </div>
+          </div>
+        <% }) %>
+      </div>
+
+    <% } %>
+
+    <!-- "Your Menu, Your Style" Banner -->
+    <div class="gjm-custom-banner" data-reveal="fade">
+      <div class="gjm-banner-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/>
+          <path d="M20 3v4"/>
+          <path d="M22 5h-4"/>
+          <path d="M4 17v2"/>
+          <path d="M5 18H3"/>
+        </svg>
+      </div>
+      <h3>Your Menu, Your Style</h3>
+      <p>We customize both Veg and Non-Veg menus completely to your taste. Choose your favorites and create the perfect combo—just the way you want.</p>
+      <div class="gjm-banner-actions">
+        <a href="https://wa.me/<%= settings.whatsapp %>?text=Hi%2C%20I%20would%20like%20to%20customize%20a%20catering%20menu%20for%20my%20event." target="_blank" rel="noopener" class="gjm-banner-btn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.301-.15-1.78-.878-2.056-.978-.276-.1-.476-.15-.677.15-.201.3-.777.978-.952 1.179-.176.2-.351.226-.652.075-.301-.15-1.272-.469-2.424-1.497-.896-.799-1.501-1.787-1.677-2.088-.175-.301-.019-.464.132-.614.136-.135.301-.351.451-.527.151-.176.201-.301.302-.502.101-.2.05-.376-.025-.526-.075-.15-.677-1.633-.928-2.235-.245-.587-.494-.507-.677-.517-.176-.01-.376-.01-.577-.01-.201 0-.526.075-.802.376-.276.301-1.053 1.029-1.053 2.511s1.078 2.912 1.229 3.113c.15.2 2.121 3.239 5.139 4.542.718.31 1.279.495 1.716.634.721.229 1.377.197 1.896.119.579-.087 1.78-.727 2.031-1.429.251-.702.251-1.303.176-1.429-.076-.125-.276-.201-.577-.351zM12.04 2c-5.522 0-10 4.477-10 10 0 1.765.459 3.424 1.261 4.871L2 22l5.281-1.385A9.957 9.957 0 0 0 12.04 22c5.522 0 10-4.478 10-10s-4.478-10-10-10zm0 18.273c-1.564 0-3.023-.424-4.283-1.162l-.307-.182-3.178.833.848-3.097-.2-.318A8.232 8.232 0 0 1 3.766 12c0-4.562 3.712-8.273 8.274-8.273 4.562 0 8.273 3.711 8.273 8.273 0 4.562-3.711 8.273-8.273 8.273z"/></svg>
+          Customize Your Menu on WhatsApp
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
