@@ -61,12 +61,18 @@
   },
   {
     "id": "g011",
-    "image": "/uploads/gallery/gallery_banquet_hall.jpg",
-    "caption": "Grand Banquet Dining Setup with Banana Leaf Placings",
+    "image": "/uploads/gallery/gallery_corporate_event.jpg",
+    "caption": "BB Catering Corporate Buffet Setup with Authentic Chettinad Live Counters",
     "category": "events"
   },
   {
     "id": "g012",
+    "image": "/uploads/gallery/gallery_birthday_event.jpg",
+    "caption": "Birthday Celebration Live Buffet & Special Chettinad Spread",
+    "category": "events"
+  },
+  {
+    "id": "g012b",
     "image": "/uploads/gallery/gallery_community_feast.jpg",
     "caption": "Festive Celebration Dining at Wedding Hall",
     "category": "events"
