@@ -57,12 +57,19 @@
       <h2>Tell Us About Your Event</h2>
       <p style="margin-top:14px; color:var(--ink-soft);">Fill in the details below — on submitting, we'll open WhatsApp with your enquiry ready to send to our team.</p>
 
+      <% if (typeof success !== 'undefined' && success) { %>
+      <div class="form-success show" style="margin-top:24px;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>
+        Thank you! Your enquiry has been received and saved. Our catering team will contact you shortly.
+      </div>
+      <% } else { %>
       <div class="form-success" style="margin-top:24px;">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>
-        Thanks! Opening WhatsApp with your enquiry details now.
+        Thanks! Your enquiry is saved and WhatsApp is opening now.
       </div>
+      <% } %>
 
-      <form id="enquiry-form" data-whatsapp="<%= settings.whatsapp %>" style="margin-top:16px;">
+      <form id="enquiry-form" action="/contact" method="POST" data-whatsapp="<%= settings.whatsapp %>" style="margin-top:16px;">
         <div class="form-grid">
           <div class="field"><label for="name">Full Name</label><input type="text" id="name" name="name" placeholder="Your name" required></div>
           <div class="field"><label for="phone">Phone Number</label><input type="tel" id="phone" name="phone" placeholder="+91 98765 43210" pattern="[0-9+\s\-]{10,15}" title="Please enter a valid phone number (at least 10 digits)" required></div>

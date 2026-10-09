@@ -25,13 +25,62 @@ function deleteUploadedFile(imagePath) {
 router.get('/', (req, res) => {
   const dishes = store.getDishes();
   const gallery = store.getGallery();
+  const enquiries = store.getEnquiries();
+  const newEnquiries = enquiries.filter(e => e.status === 'new');
   res.render('admin/dashboard', {
     dishCount: dishes.length,
     galleryCount: gallery.length,
     categoryCount: new Set(dishes.map((d) => d.category)).size,
+    enquiryCount: enquiries.length,
+    newEnquiryCount: newEnquiries.length,
+    recentEnquiries: enquiries.slice(0, 5),
     msg: req.query.msg || null,
   });
 });
+
+// ---------- Enquiries management ----------
+router.get('/enquiries', (req, res) => {
+  const statusFilter = req.query.status || 'all';
+  const allEnquiries = store.getEnquiries();
+  
+  const counts = {
+    total: allEnquiries.length,
+    new: allEnquiries.filter(e => e.status === 'new').length,
+    contacted: allEnquiries.filter(e => e.status === 'contacted').length,
+    booked: allEnquiries.filter(e => e.status === 'booked').length,
+    cancelled: allEnquiries.filter(e => e.status === 'cancelled').length,
+  };
+
+  let filtered = allEnquiries;
+  if (statusFilter && statusFilter !== 'all') {
+    filtered = allEnquiries.filter(e => e.status === statusFilter);
+  }
+
+  res.render('admin/enquiries', {
+    enquiries: filtered,
+    counts,
+    filter: statusFilter,
+    msg: req.query.msg || null,
+  });
+});
+
+router.post('/enquiries/:id/status', (req, res) => {
+  const enquiries = store.getEnquiries();
+  const enq = enquiries.find(e => e.id === req.params.id);
+  if (enq && req.body.status) {
+    enq.status = req.body.status;
+    store.saveEnquiries(enquiries);
+  }
+  res.redirect('/admin/enquiries?msg=' + encodeURIComponent('Enquiry status updated.'));
+});
+
+router.post('/enquiries/:id/delete', (req, res) => {
+  let enquiries = store.getEnquiries();
+  enquiries = enquiries.filter(e => e.id !== req.params.id);
+  store.saveEnquiries(enquiries);
+  res.redirect('/admin/enquiries?msg=' + encodeURIComponent('Enquiry deleted.'));
+});
+
 
 // ---------- Menu management ----------
 router.get('/menu', (req, res) => {

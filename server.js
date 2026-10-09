@@ -63,6 +63,15 @@ function augmentResponse(res) {
         locals.settings = {};
       }
     }
+    if (typeof locals.unreadEnquiries === 'undefined') {
+      try {
+        const store = require('./lib/store');
+        const enqs = store.getEnquiries ? store.getEnquiries() : [];
+        locals.unreadEnquiries = enqs.filter((e) => e.status === 'new').length;
+      } catch (e) {
+        locals.unreadEnquiries = 0;
+      }
+    }
     try {
       const html = renderFile(VIEWS_DIR, view, locals);
       res.setHeader('Content-Type', 'text/html; charset=utf-8');

@@ -219,7 +219,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  /* ---------- Enquiry form -> WhatsApp handoff ---------- */
+  /* ---------- Enquiry form -> Save to Server + WhatsApp handoff ---------- */
   const form = document.getElementById('enquiry-form');
   form?.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -230,12 +230,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const guests = form.querySelector('#guests')?.value || '';
     const message = form.querySelector('#message')?.value.trim() || '';
 
+    // 1. Post to Server to save in Admin Inbox
+    fetch('/api/enquiries', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, phone, eventType, date, guests, message }),
+    }).catch(err => console.error('Error saving enquiry:', err));
+
+    // 2. UI feedback & Confetti
     const success = document.querySelector('.form-success');
     if (success) { success.classList.add('show'); }
     if (typeof window.fireConfetti === 'function') window.fireConfetti();
 
+    // 3. Open WhatsApp handoff
     const text = `Hello, I'd like to enquire about catering.%0A%0AName: ${encodeURIComponent(name)}%0APhone: ${encodeURIComponent(phone)}%0AEvent: ${encodeURIComponent(eventType)}%0ADate: ${encodeURIComponent(date)}%0AGuests: ${encodeURIComponent(guests)}%0AMessage: ${encodeURIComponent(message)}`;
-    const waNumber = form.getAttribute('data-whatsapp') || '919876543210';
+    const waNumber = form.getAttribute('data-whatsapp') || '919363166123';
     const waLink = `https://wa.me/${waNumber}?text=${text}`;
 
     setTimeout(() => { window.open(waLink, '_blank'); }, 500);

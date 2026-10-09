@@ -73,7 +73,26 @@ router.get('/gallery', (req, res) => {
 });
 
 router.get('/contact', (req, res) => {
-  res.render('contact', { page: 'contact', settings: store.getSettings() });
+  res.render('contact', { page: 'contact', settings: store.getSettings(), success: req.query.success === '1' });
+});
+
+router.post('/api/enquiries', (req, res) => {
+  const body = req.body || {};
+  if (!body.name || !body.phone) {
+    return res.status(400).json({ ok: false, error: 'Name and phone number are required.' });
+  }
+
+  const newEnquiry = store.addEnquiry(body);
+  res.json({ ok: true, enquiry: newEnquiry });
+});
+
+router.post('/contact', (req, res) => {
+  const body = req.body || {};
+  if (body.name && body.phone) {
+    store.addEnquiry(body);
+  }
+  res.redirect('/contact?success=1');
 });
 
 module.exports = router;
+
