@@ -12,7 +12,7 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
       Enquiries
       <% if (typeof unreadEnquiries !== 'undefined' && unreadEnquiries > 0) { %>
-        <span class="admin-badge"><%= unreadEnquiries %></span>
+        <span class="admin-nav-badge"><%= unreadEnquiries %></span>
       <% } %>
     </a>
     <a href="/admin/menu" class="<%= active==='menu' ? 'active' : '' %>">

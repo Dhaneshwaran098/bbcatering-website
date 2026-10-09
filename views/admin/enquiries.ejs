@@ -5,134 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Enquiries &amp; Leads | Admin</title>
 <link rel="stylesheet" href="/css/style.css">
-<style>
-  .enq-stats {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 16px;
-    margin-bottom: 24px;
-  }
-  .enq-stat {
-    background: #1e1915;
-    border: 1px solid #362c23;
-    border-radius: 12px;
-    padding: 16px 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-  .enq-stat b {
-    font-size: 26px;
-    font-weight: 700;
-    color: var(--gold);
-    font-family: var(--font-heading);
-  }
-  .enq-stat span {
-    font-size: 13px;
-    color: var(--ink-soft);
-    text-transform: uppercase;
-    letter-spacing: .05em;
-  }
-  .enq-filter-bar {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: 14px;
-    margin-bottom: 20px;
-  }
-  .enq-tabs {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-  .enq-tab {
-    padding: 7px 16px;
-    border-radius: 999px;
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--ink-soft);
-    background: #1e1915;
-    border: 1px solid #362c23;
-    text-decoration: none;
-    transition: all .2s;
-  }
-  .enq-tab:hover, .enq-tab.active {
-    background: var(--orange);
-    color: #fff;
-    border-color: var(--orange);
-  }
-  .status-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 4px 10px;
-    border-radius: 100px;
-    font-size: 11.5px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: .04em;
-  }
-  .status-badge.new {
-    background: rgba(217, 108, 44, 0.18);
-    color: #f97316;
-    border: 1px solid rgba(217, 108, 44, 0.4);
-  }
-  .status-badge.contacted {
-    background: rgba(59, 130, 246, 0.18);
-    color: #60a5fa;
-    border: 1px solid rgba(59, 130, 246, 0.4);
-  }
-  .status-badge.booked {
-    background: rgba(34, 197, 94, 0.18);
-    color: #4ade80;
-    border: 1px solid rgba(34, 197, 94, 0.4);
-  }
-  .status-badge.cancelled {
-    background: rgba(148, 163, 184, 0.18);
-    color: #94a3b8;
-    border: 1px solid rgba(148, 163, 184, 0.4);
-  }
-  .contact-actions {
-    display: flex;
-    gap: 8px;
-    margin-top: 6px;
-  }
-  .contact-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    padding: 4px 10px;
-    font-size: 12px;
-    font-weight: 600;
-    border-radius: 6px;
-    text-decoration: none;
-    transition: transform .15s, opacity .15s;
-  }
-  .contact-btn:hover { transform: translateY(-1px); }
-  .contact-btn.wa { background: #25D366; color: #000; }
-  .contact-btn.tel { background: #3b82f6; color: #fff; }
-  .enq-msg-box {
-    background: rgba(0,0,0,0.25);
-    border: 1px solid #362c23;
-    padding: 10px 14px;
-    border-radius: 8px;
-    font-size: 13px;
-    color: #d1c7bc;
-    white-space: pre-wrap;
-    max-width: 320px;
-    word-break: break-word;
-  }
-  .status-select {
-    padding: 6px 10px;
-    background: #28211b;
-    border: 1px solid #4a3c30;
-    color: #fff;
-    border-radius: 6px;
-    font-size: 12.5px;
-    font-weight: 600;
-  }
-</style>
 </head>
 <body class="admin-body">
 <div class="admin-shell">
@@ -140,48 +12,56 @@
   <main class="admin-main">
     <div class="admin-header">
       <div>
-        <h1>Customer Enquiries &amp; Messages</h1>
-        <p>Live incoming leads and catering requests submitted through your website.</p>
+        <h1>Customer Enquiries &amp; Leads</h1>
+        <p>Live incoming inquiries and event bookings submitted from your website.</p>
       </div>
     </div>
 
     <% if (msg) { %><div class="admin-flash"><%= msg %></div><% } %>
 
-    <div class="enq-stats">
-      <div class="enq-stat">
+    <div class="stat-cards">
+      <div class="stat-card">
         <b><%= counts.total %></b>
         <span>Total Enquiries</span>
       </div>
-      <div class="enq-stat">
-        <b style="color:#f97316;"><%= counts.new %></b>
+      <div class="stat-card">
+        <b style="color:var(--orange);"><%= counts.new %></b>
         <span>New / Unhandled</span>
       </div>
-      <div class="enq-stat">
-        <b style="color:#60a5fa;"><%= counts.contacted %></b>
+      <div class="stat-card">
+        <b style="color:#2563eb;"><%= counts.contacted %></b>
         <span>Contacted</span>
       </div>
-      <div class="enq-stat">
-        <b style="color:#4ade80;"><%= counts.booked %></b>
-        <span>Booked Events</span>
+      <div class="stat-card">
+        <b style="color:#16a34a;"><%= counts.booked %></b>
+        <span>Confirmed Bookings</span>
       </div>
     </div>
 
     <div class="admin-card">
-      <div class="enq-filter-bar">
-        <div class="enq-tabs">
-          <a href="/admin/enquiries" class="enq-tab <%= !filter || filter==='all' ? 'active' : '' %>">All (<%= counts.total %>)</a>
-          <a href="/admin/enquiries?status=new" class="enq-tab <%= filter==='new' ? 'active' : '' %>">New (<%= counts.new %>)</a>
-          <a href="/admin/enquiries?status=contacted" class="enq-tab <%= filter==='contacted' ? 'active' : '' %>">Contacted (<%= counts.contacted %>)</a>
-          <a href="/admin/enquiries?status=booked" class="enq-tab <%= filter==='booked' ? 'active' : '' %>">Booked (<%= counts.booked %>)</a>
-          <a href="/admin/enquiries?status=cancelled" class="enq-tab <%= filter==='cancelled' ? 'active' : '' %>">Cancelled (<%= counts.cancelled %>)</a>
-        </div>
+      <div class="enq-filter-tabs">
+        <a href="/admin/enquiries" class="enq-tab-btn <%= !filter || filter==='all' ? 'active' : '' %>">
+          All Leads (<%= counts.total %>)
+        </a>
+        <a href="/admin/enquiries?status=new" class="enq-tab-btn <%= filter==='new' ? 'active' : '' %>">
+          New (<%= counts.new %>)
+        </a>
+        <a href="/admin/enquiries?status=contacted" class="enq-tab-btn <%= filter==='contacted' ? 'active' : '' %>">
+          Contacted (<%= counts.contacted %>)
+        </a>
+        <a href="/admin/enquiries?status=booked" class="enq-tab-btn <%= filter==='booked' ? 'active' : '' %>">
+          Booked (<%= counts.booked %>)
+        </a>
+        <a href="/admin/enquiries?status=cancelled" class="enq-tab-btn <%= filter==='cancelled' ? 'active' : '' %>">
+          Cancelled (<%= counts.cancelled %>)
+        </a>
       </div>
 
       <% if (enquiries.length === 0) { %>
         <div style="text-align:center; padding:50px 20px;">
-          <div style="font-size:42px; margin-bottom:12px;">📬</div>
-          <h3 style="color:#fff; font-size:18px; margin-bottom:6px;">No enquiries found</h3>
-          <p style="color:var(--ink-soft); font-size:14px;">When customers submit the enquiry form on your website, their details will be saved and displayed here.</p>
+          <div style="font-size:44px; margin-bottom:12px;">📬</div>
+          <h3 style="font-size:18px; color:var(--brown); margin-bottom:6px;">No enquiries found in this category</h3>
+          <p style="color:var(--ink-soft); font-size:14px; max-width:400px; margin:0 auto;">When customers submit the enquiry form on your website, their contact details and event requests will appear here.</p>
         </div>
       <% } else { %>
       <div style="overflow-x:auto;">
@@ -192,7 +72,7 @@
               <th>Customer</th>
               <th>Event Details</th>
               <th>Message / Notes</th>
-              <th>Update Status</th>
+              <th>Status</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -206,43 +86,43 @@
             %>
             <tr>
               <td>
-                <span class="status-badge <%= enq.status %>"><%= enq.status %></span>
-                <div style="font-size:12px; color:var(--ink-soft); margin-top:6px;"><%= dateStr %></div>
-                <div style="font-size:11px; color:#7d6f62;"><%= timeStr %></div>
+                <span class="lead-status <%= enq.status %>"><%= enq.status %></span>
+                <div style="font-size:12.5px; color:var(--ink-soft); margin-top:6px; font-weight:600;"><%= dateStr %></div>
+                <div style="font-size:11.5px; color:var(--ink-soft);"><%= timeStr %></div>
               </td>
               <td>
-                <strong style="font-size:15px; color:#fff;"><%= enq.name %></strong>
-                <div style="font-size:13.5px; color:var(--gold); margin-top:2px; font-weight:600;"><%= enq.phone %></div>
-                <div class="contact-actions">
-                  <a href="tel:<%= enq.phone %>" class="contact-btn tel" title="Direct Phone Call">
+                <strong style="font-size:15px; color:var(--ink);"><%= enq.name %></strong>
+                <div style="font-size:13.5px; color:var(--brown); font-weight:700; margin-top:2px;"><%= enq.phone %></div>
+                <div class="lead-contact-links">
+                  <a href="tel:<%= enq.phone %>" class="lead-btn-tel" title="Call Customer">
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 2 .7 3a2 2 0 0 1-.4 2.1L8 10.3a16 16 0 0 0 6 6l1.5-1.5a2 2 0 0 1 2-.5c1 .3 2 .5 3 .6a2 2 0 0 1 1.5 2Z"/></svg>
                     Call
                   </a>
-                  <a href="https://wa.me/<%= waPhone %>?text=<%= encodeURIComponent(`Hi ${enq.name}, thank you for reaching out to BB Catering regarding your ${enq.eventType || 'event'} enquiry!`) %>" target="_blank" rel="noopener" class="contact-btn wa" title="Chat on WhatsApp">
+                  <a href="https://wa.me/<%= waPhone %>?text=<%= encodeURIComponent(`Hi ${enq.name}, thank you for contacting BB Catering regarding your ${enq.eventType || 'catering'} enquiry!`) %>" target="_blank" rel="noopener" class="lead-btn-wa" title="Open WhatsApp Chat">
                     <svg width="12" height="12" viewBox="0 0 32 32" fill="currentColor"><path d="M16 2a13.9 13.9 0 0 0-12 21L2 30l7.2-1.9A13.9 13.9 0 1 0 16 2zm0 25.5c-2.3 0-4.6-.6-6.6-1.8l-.5-.3-4.9 1.3 1.3-4.7-.3-.5A11.5 11.5 0 1 1 16 27.5z"/></svg>
                     WhatsApp
                   </a>
                 </div>
               </td>
               <td>
-                <div style="font-weight:600; color:#fff;"><%= enq.eventType || 'Catering Enquiry' %></div>
+                <div style="font-weight:700; color:var(--brown); font-size:14px;"><%= enq.eventType || 'Catering Enquiry' %></div>
                 <% if (enq.date) { %>
-                  <div style="font-size:12.5px; color:#d1c7bc; margin-top:3px;">📅 Date: <b><%= enq.date %></b></div>
+                  <div style="font-size:12.5px; color:var(--ink); margin-top:4px;">📅 Date: <b><%= enq.date %></b></div>
                 <% } %>
                 <% if (enq.guests) { %>
-                  <div style="font-size:12.5px; color:#d1c7bc; margin-top:2px;">👥 Guests: <b><%= enq.guests %></b></div>
+                  <div style="font-size:12.5px; color:var(--ink); margin-top:2px;">👥 Guests: <b><%= enq.guests %></b></div>
                 <% } %>
               </td>
               <td>
                 <% if (enq.message) { %>
-                  <div class="enq-msg-box"><%= enq.message %></div>
+                  <div class="lead-note-box"><%= enq.message %></div>
                 <% } else { %>
-                  <span style="color:var(--ink-soft); font-size:12px; font-style:italic;">No additional notes</span>
+                  <span style="color:var(--ink-soft); font-size:12.5px; font-style:italic;">No extra notes provided</span>
                 <% } %>
               </td>
               <td>
                 <form method="POST" action="/admin/enquiries/<%= enq.id %>/status" style="display:inline-block;">
-                  <select name="status" class="status-select" onchange="this.form.submit()">
+                  <select name="status" class="lead-status-select" onchange="this.form.submit()">
                     <option value="new" <%= enq.status==='new' ? 'selected' : '' %>>New</option>
                     <option value="contacted" <%= enq.status==='contacted' ? 'selected' : '' %>>Contacted</option>
                     <option value="booked" <%= enq.status==='booked' ? 'selected' : '' %>>Booked</option>
