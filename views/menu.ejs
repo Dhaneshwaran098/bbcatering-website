@@ -27,50 +27,6 @@
 <!-- Gabriel JM Events Style Celebration Menus Section -->
 <%- include('partials/menuShowcase', { menus: menus, settings: settings }) %>
 
-<!-- Individual Signature Dishes by Category -->
-<% if (categories && categories.length > 0) { %>
-<section class="section" style="background:var(--cream); padding-top:80px;">
-  <div class="container">
-    
-    <div class="section-head center" data-reveal="fade">
-      <div class="eyebrow">Signature Dishes</div>
-      <h2>Browse by Dish Category</h2>
-      <p>Looking for a specific dish to add to your custom spread? Explore our authentic specialty items across all course types.</p>
-    </div>
-
-    <div class="menu-tabs" data-reveal="fade">
-      <% categories.forEach((cat, i) => { %>
-        <button class="menu-tab <%= i===0 ? 'active' : '' %>" data-target="panel-<%= i %>"><%= cat %></button>
-      <% }) %>
-    </div>
-
-    <% categories.forEach((cat, i) => { %>
-    <div class="menu-panel <%= i===0 ? 'active' : '' %>" id="panel-<%= i %>">
-      <div class="grid grid--4" data-stagger>
-        <% (grouped[cat] || []).forEach(dish => { %>
-        <div class="card dish-card" data-reveal="scale">
-          <div class="card-media">
-            <div class="ph-photo" style="background-image:url('<%= dish.image %>')"></div>
-            <span class="card-tag"><%= dish.category %></span>
-          </div>
-          <div class="card-body">
-            <div>
-              <h4><%= dish.name %></h4>
-              <div class="spice">
-                <% for (let s=0; s<4; s++) { %><span class="<%= s < dish.spice ? 'on' : '' %>"></span><% } %>
-              </div>
-            </div>
-          </div>
-        </div>
-        <% }) %>
-      </div>
-    </div>
-    <% }) %>
-
-  </div>
-</section>
-<% } %>
-
 <%- include('partials/footer') %>
 </body>
 </html>
