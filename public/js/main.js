@@ -104,52 +104,119 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* ---------- Gabriel JM Style Celebration Menu Tabs ---------- */
-  const gjmTabs = document.querySelectorAll('.gjm-tab-btn');
-  const gjmPanels = document.querySelectorAll('.gjm-menu-panel');
-  gjmTabs.forEach((tab, index) => {
-    tab.addEventListener('click', () => {
-      gjmTabs.forEach(t => {
-        t.classList.remove('active');
-        t.setAttribute('aria-selected', 'false');
+  /* ---------- Gabriel JM Style Celebration Menu Tabs (Section-Scoped) ---------- */
+  document.querySelectorAll('.gjm-tabs-wrapper').forEach(wrapper => {
+    const tabs = wrapper.querySelectorAll('.gjm-tab-btn');
+    const container = wrapper.closest('.container');
+    const boardWrapper = container ? container.querySelector('.gjm-board-wrapper') : null;
+    const panels = boardWrapper ? boardWrapper.querySelectorAll('.gjm-menu-panel') : [];
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => {
+          t.classList.remove('active');
+          t.setAttribute('aria-selected', 'false');
+        });
+        panels.forEach(p => p.classList.remove('active'));
+
+        tab.classList.add('active');
+        tab.setAttribute('aria-selected', 'true');
+
+        const targetId = tab.getAttribute('data-target');
+        const targetPanel = targetId ? document.getElementById(targetId) : null;
+        if (targetPanel) {
+          targetPanel.classList.add('active');
+        }
+
+        // Smoothly scroll active tab into view in horizontal scroller
+        tab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
       });
-      gjmPanels.forEach(p => p.classList.remove('active'));
-
-      tab.classList.add('active');
-      tab.setAttribute('aria-selected', 'true');
-      const targetPanel = document.getElementById(`gjm-panel-${index}`);
-      if (targetPanel) {
-        targetPanel.classList.add('active');
-      }
-
-      // Smoothly scroll active tab into view in horizontal scroller
-      tab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
     });
   });
 
-  /* ---------- Gabriel JM Style Mobile Menu Accordion ---------- */
-  const gjmAccHeaders = document.querySelectorAll('.gjm-acc-header');
-  gjmAccHeaders.forEach(btn => {
+  /* ---------- Gabriel JM Style Mobile Menu Accordion (Section-Scoped) ---------- */
+  document.querySelectorAll('.gjm-mobile-accordion').forEach(accordion => {
+    const headers = accordion.querySelectorAll('.gjm-acc-header');
+    headers.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const targetId = btn.getAttribute('data-acc-target');
+        const targetBody = targetId ? document.getElementById(targetId) : null;
+        const isAlreadyOpen = btn.classList.contains('active');
+
+        // Close all accordion panels in this group
+        headers.forEach(h => {
+          h.classList.remove('active');
+          h.setAttribute('aria-expanded', 'false');
+        });
+        accordion.querySelectorAll('.gjm-acc-body').forEach(b => b.classList.remove('open'));
+
+        // If it wasn't already open, open it
+        if (!isAlreadyOpen && targetBody) {
+          btn.classList.add('active');
+          btn.setAttribute('aria-expanded', 'true');
+          targetBody.classList.add('open');
+        }
+      });
+    });
+  });
+
+  /* ---------- Gabriel JM Style Category Toggle (Veg vs Non-Veg Exclusive View) ---------- */
+  const catToggleBtns = document.querySelectorAll('.gjm-cat-toggle-btn');
+  const catSections = document.querySelectorAll('.gjm-category-content');
+
+  function switchMenuCategory(targetSectionId) {
+    catToggleBtns.forEach(btn => {
+      const isTarget = btn.getAttribute('data-target') === targetSectionId;
+      btn.classList.toggle('active', isTarget);
+      btn.setAttribute('aria-selected', isTarget ? 'true' : 'false');
+    });
+
+    catSections.forEach(section => {
+      if (section.id === targetSectionId) {
+        section.style.display = 'block';
+        section.classList.add('active');
+
+        // Ensure the active tab inside this section triggers panel visibility correctly
+        const activeTab = section.querySelector('.gjm-tab-btn.active') || section.querySelector('.gjm-tab-btn');
+        if (activeTab) {
+          const targetPanelId = activeTab.getAttribute('data-target');
+          if (targetPanelId) {
+            section.querySelectorAll('.gjm-menu-panel').forEach(p => p.classList.remove('active'));
+            const p = document.getElementById(targetPanelId);
+            if (p) p.classList.add('active');
+          }
+        }
+      } else {
+        section.style.display = 'none';
+        section.classList.remove('active');
+      }
+    });
+  }
+
+  catToggleBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      const targetId = btn.getAttribute('data-acc-target');
-      const targetBody = document.getElementById(targetId);
-      const isAlreadyOpen = btn.classList.contains('active');
+      const targetId = btn.getAttribute('data-target');
+      if (targetId) {
+        switchMenuCategory(targetId);
 
-      // Close all accordion panels
-      gjmAccHeaders.forEach(h => {
-        h.classList.remove('active');
-        h.setAttribute('aria-expanded', 'false');
-      });
-      document.querySelectorAll('.gjm-acc-body').forEach(b => b.classList.remove('open'));
-
-      // If it wasn't already open, open it
-      if (!isAlreadyOpen && targetBody) {
-        btn.classList.add('active');
-        btn.setAttribute('aria-expanded', 'true');
-        targetBody.classList.add('open');
+        // Smoothly scroll up to the category switcher if user has scrolled down into boards
+        const switcherStrip = document.querySelector('.gjm-cat-switcher-strip');
+        if (switcherStrip) {
+          const rect = switcherStrip.getBoundingClientRect();
+          if (rect.top < 60) {
+            switcherStrip.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }
       }
     });
   });
+
+  // Handle URL hashes on load (e.g., #veg or #non-veg)
+  if (window.location.hash === '#veg' || window.location.hash === '#veg-menus') {
+    switchMenuCategory('cat-section-veg');
+  } else if (window.location.hash === '#non-veg' || window.location.hash === '#non-veg-menus') {
+    switchMenuCategory('cat-section-non-veg');
+  }
 
   /* ---------- Gallery lightbox ---------- */
   const lightbox = document.querySelector('.lightbox');
