@@ -3,3 +3,5 @@ node_modules/
 public/uploads/img-*
 npm-debug.log*
 .DS_Store
+.aider-desk/
+

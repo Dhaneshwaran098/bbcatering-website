@@ -5,9 +5,18 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "hash-password": "node scripts/hash-password.js"
+    "hash-password": "node scripts/hash-password.js",
+    "migrate:supabase": "node scripts/migrate-to-supabase.js",
+    "test:supabase": "node scripts/test-supabase.js",
+    "seed:admin": "node scripts/seed-admin.js",
+    "test:email": "node scripts/test-email.js",
+    "update:admin-email": "node scripts/update-admin-email.js"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@supabase/ssr": "^0.12.7",
+    "@supabase/supabase-js": "^2.118.0",
+    "nodemailer": "^10.1.6"
+  },
   "engines": {
     "node": ">=18.0.0"
   }

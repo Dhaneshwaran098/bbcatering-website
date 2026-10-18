@@ -58,7 +58,7 @@ function augmentResponse(res) {
     locals = locals || {};
     if (!locals.settings) {
       try {
-        locals.settings = require('./lib/store').getSettings();
+        locals.settings = require('./lib/store').getCachedSettings();
       } catch (e) {
         locals.settings = {};
       }
@@ -66,8 +66,7 @@ function augmentResponse(res) {
     if (typeof locals.unreadEnquiries === 'undefined') {
       try {
         const store = require('./lib/store');
-        const enqs = store.getEnquiries ? store.getEnquiries() : [];
-        locals.unreadEnquiries = enqs.filter((e) => e.status === 'new').length;
+        locals.unreadEnquiries = store.getCachedUnreadEnquiries ? store.getCachedUnreadEnquiries() : 0;
       } catch (e) {
         locals.unreadEnquiries = 0;
       }
@@ -167,7 +166,7 @@ function startServer(portToTry) {
     const actualPort = server.address()?.port || portToTry;
     let bizName = 'Catering site';
     try {
-      bizName = require('./lib/store').getSettings().businessName || bizName;
+      bizName = require('./lib/store').getCachedSettings().businessName || bizName;
     } catch (e) { /* settings fallback */ }
     console.log('\n🍛  ' + bizName + ' server running at http://localhost:' + actualPort);
     console.log('    Admin login: http://localhost:' + actualPort + '/admin/login\n');
@@ -189,6 +188,9 @@ function startServer(portToTry) {
   server.listen(portToTry);
 }
 
-startServer(PORT);
+const store = require('./lib/store');
+store.init().finally(() => {
+  startServer(PORT);
+});
 
 module.exports = server;

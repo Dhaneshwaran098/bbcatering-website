@@ -22,10 +22,12 @@ function deleteUploadedFile(imagePath) {
 }
 
 // ---------- Dashboard home ----------
-router.get('/', (req, res) => {
-  const dishes = store.getDishes();
-  const gallery = store.getGallery();
-  const enquiries = store.getEnquiries();
+router.get('/', async (req, res) => {
+  const [dishes, gallery, enquiries] = await Promise.all([
+    store.getDishes(),
+    store.getGallery(),
+    store.getEnquiries(),
+  ]);
   const newEnquiries = enquiries.filter(e => e.status === 'new');
   res.render('admin/dashboard', {
     dishCount: dishes.length,
@@ -39,9 +41,9 @@ router.get('/', (req, res) => {
 });
 
 // ---------- Enquiries management ----------
-router.get('/enquiries', (req, res) => {
+router.get('/enquiries', async (req, res) => {
   const statusFilter = req.query.status || 'all';
-  const allEnquiries = store.getEnquiries();
+  const allEnquiries = await store.getEnquiries();
   
   const counts = {
     total: allEnquiries.length,
@@ -64,27 +66,28 @@ router.get('/enquiries', (req, res) => {
   });
 });
 
-router.post('/enquiries/:id/status', (req, res) => {
-  const enquiries = store.getEnquiries();
+router.post('/enquiries/:id/status', async (req, res) => {
+  const enquiries = await store.getEnquiries();
   const enq = enquiries.find(e => e.id === req.params.id);
   if (enq && req.body.status) {
     enq.status = req.body.status;
-    store.saveEnquiries(enquiries);
+    await store.saveEnquiries(enquiries);
   }
   res.redirect('/admin/enquiries?msg=' + encodeURIComponent('Enquiry status updated.'));
 });
 
-router.post('/enquiries/:id/delete', (req, res) => {
-  let enquiries = store.getEnquiries();
+router.post('/enquiries/:id/delete', async (req, res) => {
+  let enquiries = await store.getEnquiries();
   enquiries = enquiries.filter(e => e.id !== req.params.id);
-  store.saveEnquiries(enquiries);
+  await store.saveEnquiries(enquiries);
   res.redirect('/admin/enquiries?msg=' + encodeURIComponent('Enquiry deleted.'));
 });
 
 
 // ---------- Menu management ----------
-router.get('/menu', (req, res) => {
-  const dishes = store.getDishes().sort((a, b) => a.category.localeCompare(b.category) || a.name.localeCompare(b.name));
+router.get('/menu', async (req, res) => {
+  const rawDishes = await store.getDishes();
+  const dishes = rawDishes.slice().sort((a, b) => a.category.localeCompare(b.category) || a.name.localeCompare(b.name));
   res.render('admin/menu', {
     dishes,
     categoryOptions: CATEGORY_OPTIONS,
@@ -93,20 +96,21 @@ router.get('/menu', (req, res) => {
   });
 });
 
-router.get('/menu/:id/edit', (req, res) => {
-  const dishes = store.getDishes();
+router.get('/menu/:id/edit', async (req, res) => {
+  const rawDishes = await store.getDishes();
+  const dishes = rawDishes.slice().sort((a, b) => a.category.localeCompare(b.category) || a.name.localeCompare(b.name));
   const editDish = dishes.find((d) => d.id === req.params.id);
   if (!editDish) return res.redirect('/admin/menu?msg=Dish not found');
   res.render('admin/menu', {
-    dishes: dishes.sort((a, b) => a.category.localeCompare(b.category) || a.name.localeCompare(b.name)),
+    dishes,
     categoryOptions: CATEGORY_OPTIONS,
     msg: null,
     editDish,
   });
 });
 
-router.post('/menu', upload.single('image'), (req, res) => {
-  const dishes = store.getDishes();
+router.post('/menu', upload.single('image'), async (req, res) => {
+  const dishes = await store.getDishes();
   const { name, category, price, unit, spice, featured } = req.body;
 
   if (!name || !category || !price) {
@@ -125,12 +129,12 @@ router.post('/menu', upload.single('image'), (req, res) => {
   };
 
   dishes.push(newDish);
-  store.saveDishes(dishes);
+  await store.saveDishes(dishes);
   res.redirect('/admin/menu?msg=' + encodeURIComponent(`"${newDish.name}" added.`));
 });
 
-router.post('/menu/:id/update', upload.single('image'), (req, res) => {
-  const dishes = store.getDishes();
+router.post('/menu/:id/update', upload.single('image'), async (req, res) => {
+  const dishes = await store.getDishes();
   const dish = dishes.find((d) => d.id === req.params.id);
   if (!dish) return res.redirect('/admin/menu?msg=' + encodeURIComponent('Dish not found.'));
 
@@ -151,22 +155,23 @@ router.post('/menu/:id/update', upload.single('image'), (req, res) => {
     dish.image = `/uploads/${req.file.filename}`;
   }
 
-  store.saveDishes(dishes);
+  await store.saveDishes(dishes);
   res.redirect('/admin/menu?msg=' + encodeURIComponent(`"${dish.name}" updated.`));
 });
 
-router.post('/menu/:id/delete', (req, res) => {
-  let dishes = store.getDishes();
+router.post('/menu/:id/delete', async (req, res) => {
+  let dishes = await store.getDishes();
   const dish = dishes.find((d) => d.id === req.params.id);
   if (dish) deleteUploadedFile(dish.image);
   dishes = dishes.filter((d) => d.id !== req.params.id);
-  store.saveDishes(dishes);
+  await store.saveDishes(dishes);
   res.redirect('/admin/menu?msg=' + encodeURIComponent('Dish deleted.'));
 });
 
 // ---------- Gallery management ----------
-router.get('/gallery', (req, res) => {
-  const gallery = store.getGallery().slice().reverse();
+router.get('/gallery', async (req, res) => {
+  const rawGallery = await store.getGallery();
+  const gallery = rawGallery.slice().reverse();
   res.render('admin/gallery', {
     gallery,
     categoryOptions: GALLERY_CATEGORY_OPTIONS,
@@ -174,41 +179,42 @@ router.get('/gallery', (req, res) => {
   });
 });
 
-router.post('/gallery', upload.single('image'), (req, res) => {
+router.post('/gallery', upload.single('image'), async (req, res) => {
   if (!req.file) {
     return res.redirect('/admin/gallery?msg=' + encodeURIComponent('Please choose a photo to upload.'));
   }
   const { caption, category } = req.body;
-  const items = store.getGallery();
+  const items = await store.getGallery();
   items.push({
     id: store.generateId('g'),
     image: `/uploads/${req.file.filename}`,
     caption: (caption || '').trim() || 'Untitled',
     category: category || 'dishes',
   });
-  store.saveGallery(items);
+  await store.saveGallery(items);
   res.redirect('/admin/gallery?msg=' + encodeURIComponent('Photo added to gallery.'));
 });
 
-router.post('/gallery/:id/delete', (req, res) => {
-  let items = store.getGallery();
+router.post('/gallery/:id/delete', async (req, res) => {
+  let items = await store.getGallery();
   const item = items.find((g) => g.id === req.params.id);
   if (item) deleteUploadedFile(item.image);
   items = items.filter((g) => g.id !== req.params.id);
-  store.saveGallery(items);
+  await store.saveGallery(items);
   res.redirect('/admin/gallery?msg=' + encodeURIComponent('Photo removed.'));
 });
 
 // ---------- Site settings ----------
-router.get('/settings', (req, res) => {
+router.get('/settings', async (req, res) => {
+  const settings = await store.getSettings();
   res.render('admin/settings', {
-    settings: store.getSettings(),
+    settings,
     msg: req.query.msg || null,
   });
 });
 
-router.post('/settings', upload.fields(['heroImage', 'logoImage', 'faviconImage']), (req, res) => {
-  const settings = store.getSettings();
+router.post('/settings', upload.fields(['heroImage', 'logoImage', 'faviconImage']), async (req, res) => {
+  const settings = await store.getSettings();
   const {
     businessName, tagline, aboutLede, yearsExperience, phone, whatsapp, email,
     address, addressLocality, addressRegion, domain, instagram, facebook, youtube, mapEmbedUrl,
@@ -245,7 +251,7 @@ router.post('/settings', upload.fields(['heroImage', 'logoImage', 'faviconImage'
     settings.faviconImage = `/uploads/${req.files.faviconImage.filename}`;
   }
 
-  store.saveSettings(settings);
+  await store.saveSettings(settings);
   res.redirect('/admin/settings?msg=' + encodeURIComponent('Settings saved.'));
 });
 

@@ -1,29 +1,11 @@
 {
-  "businessName": "BB Catering",
-  "tagline": "Where Every Feast Feels Special",
-  "aboutLede": "BB Catering — Quality. Quantity. Taste. Every Time.",
-  "yearsExperience": "7+",
-  "phone": "+91 93631 66123",
-  "whatsapp": "919363166123",
   "email": "bbcateringsocialmedia@gmail.com",
-  "address": "Madurai Kurakadai, Mambakkam",
-  "addressLocality": "Chennai",
-  "addressRegion": "Tamil Nadu",
+  "phone": "+91 93631 66123",
   "domain": "https://bbcatering.in",
-  "instagram": "https://www.instagram.com/bbcateringchennai?stkn=MXQ3NGFxajF0Y3A2MQ==",
-  "facebook": "https://www.facebook.com/billa.babu.908/reels/",
-  "youtube": "https://www.youtube.com/@bbcatreings",
   "mapUrl": "https://maps.app.goo.gl/BryeyN3jRRctuEe58",
-  "mapEmbedUrl": "https://www.google.com/maps?q=12.9361151,79.9108645&hl=en&z=17&output=embed",
-  "heroImage": "/images/hero-catering.jpg",
-  "logoImage": "/images/logo.png",
-  "logoFullImage": "/images/logo.png",
-  "faviconImage": "/images/logo.png",
-  "priceRange": "₹₹",
-  "openingHours": {
-    "opens": "09:00",
-    "closes": "22:00"
-  },
+  "address": "Madurai Kurakadai, Mambakkam",
+  "tagline": "Where Every Feast Feels Special",
+  "youtube": "https://www.youtube.com/@bbcatreings",
   "cuisines": [
     "South Indian",
     "Madurai",
@@ -31,5 +13,23 @@
     "Biryani",
     "Non-Vegetarian",
     "Vegetarian"
-  ]
+  ],
+  "facebook": "https://www.facebook.com/billa.babu.908/reels/",
+  "whatsapp": "919363166123",
+  "aboutLede": "BB Catering — Quality. Quantity. Taste. Every Time.",
+  "heroImage": "/images/hero-catering.jpg",
+  "instagram": "https://www.instagram.com/bbcateringchennai?stkn=MXQ3NGFxajF0Y3A2MQ==",
+  "logoImage": "/images/logo.png",
+  "priceRange": "₹₹",
+  "mapEmbedUrl": "https://www.google.com/maps?q=12.9361151,79.9108645&hl=en&z=17&output=embed",
+  "businessName": "BB Catering",
+  "faviconImage": "/images/logo.png",
+  "openingHours": {
+    "opens": "09:00",
+    "closes": "22:00"
+  },
+  "addressRegion": "Tamil Nadu",
+  "logoFullImage": "/images/logo.png",
+  "addressLocality": "Chennai",
+  "yearsExperience": "7+"
 }

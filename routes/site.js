@@ -17,12 +17,14 @@ function groupByCategory(dishes) {
   return groups;
 }
 
-router.get('/', (req, res) => {
-  const dishes = store.getDishes();
-  const menus = store.getMenus();
-  const gallery = store.getGallery();
-  const videos = store.getVideos();
-  const settings = store.getSettings();
+router.get('/', async (req, res) => {
+  const [dishes, menus, gallery, videos, settings] = await Promise.all([
+    store.getDishes(),
+    store.getMenus(),
+    store.getGallery(),
+    store.getVideos(),
+    store.getSettings(),
+  ]);
   const featured = dishes.filter((d) => d.featured).slice(0, 4);
   const popular = featured.length ? featured : dishes.slice(0, 4);
   res.render('index', {
@@ -35,61 +37,70 @@ router.get('/', (req, res) => {
   });
 });
 
-router.get('/about', (req, res) => {
-  res.render('about', { page: 'about', settings: store.getSettings() });
+router.get('/about', async (req, res) => {
+  const settings = await store.getSettings();
+  res.render('about', { page: 'about', settings });
 });
 
-router.get('/services', (req, res) => {
-  res.render('services', { page: 'services', settings: store.getSettings() });
+router.get('/services', async (req, res) => {
+  const settings = await store.getSettings();
+  res.render('services', { page: 'services', settings });
 });
 
-router.get('/menu', (req, res) => {
-  const dishes = store.getDishes();
-  const menus = store.getMenus();
+router.get('/menu', async (req, res) => {
+  const [dishes, menus, settings] = await Promise.all([
+    store.getDishes(),
+    store.getMenus(),
+    store.getSettings(),
+  ]);
   const grouped = groupByCategory(dishes);
   const categories = CATEGORY_ORDER.filter((c) => grouped[c] && grouped[c].length);
   // include any custom categories not in the fixed order, at the end
   Object.keys(grouped).forEach((c) => { if (!categories.includes(c)) categories.push(c); });
   res.render('menu', {
     page: 'menu',
-    settings: store.getSettings(),
+    settings,
     menus,
     categories,
     grouped,
   });
 });
 
-router.get('/gallery', (req, res) => {
-  const gallery = store.getGallery();
-  const videos = store.getVideos();
+router.get('/gallery', async (req, res) => {
+  const [gallery, videos, settings] = await Promise.all([
+    store.getGallery(),
+    store.getVideos(),
+    store.getSettings(),
+  ]);
   const categories = [...new Set(gallery.map((g) => g.category))];
   res.render('gallery', {
     page: 'gallery',
-    settings: store.getSettings(),
+    settings,
     gallery,
     videos,
     categories,
   });
 });
 
-router.get('/contact', (req, res) => {
-  res.render('contact', { page: 'contact', settings: store.getSettings(), success: req.query.success === '1' });
+router.get('/contact', async (req, res) => {
+  const settings = await store.getSettings();
+  res.render('contact', { page: 'contact', settings, success: req.query.success === '1' });
 });
 
-router.post('/api/enquiries', (req, res) => {
+router.post('/api/enquiries', async (req, res) => {
   const body = req.body || {};
   if (!body.name || !body.phone) {
     return res.status(400).json({ ok: false, error: 'Name and phone number are required.' });
   }
 
-  const newEnquiry = store.addEnquiry(body);
+  const newEnquiry = await store.addEnquiry(body);
   res.json({ ok: true, enquiry: newEnquiry });
 });
 
-router.post('/contact', (req, res) => {
+router.post('/contact', async (req, res) => {
   const body = req.body || {};
   if (body.name && body.phone) {
-    store.addEnquiry(body);
+    await store.addEnquiry(body);
   }
   res.redirect('/contact?success=1');
 });

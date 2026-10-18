@@ -46,7 +46,29 @@ Once logged in at `/admin` you'll see three sections:
 - **Gallery Photos** — upload a photo with a caption and category (dishes / prep / events / setups). It appears instantly in the public gallery with filtering already wired up.
 - **Site Settings** — phone number, WhatsApp number, address, social links, Google Maps embed URL, and the homepage hero photo.
 
-Photos are stored in `public/uploads/`. Menu, gallery and settings data are stored as simple JSON files in the `data/` folder — you can open and read them directly if you ever want to inspect or back up your content.
+Photos are stored in `public/uploads/`. Content can be stored in **Supabase** (cloud PostgreSQL) with automatic local JSON fallback.
+
+---
+
+## 2.5. Connecting Supabase Database (Recommended)
+
+1. Create a free project at [supabase.com](https://supabase.com).
+2. Go to the **SQL Editor** in your Supabase dashboard and run the queries in [`supabase-schema.sql`](supabase-schema.sql) to create the tables (`dishes`, `menus`, `gallery`, `videos`, `enquiries`, `settings`) and security policies.
+3. Open **Project Settings -> API** in Supabase and copy your **Project URL** and **service_role secret key** (or anon key).
+4. Add them to your `.env` file:
+   ```bash
+   SUPABASE_URL=https://your-project-id.supabase.co
+   SUPABASE_SERVICE_ROLE_KEY=your-supabase-service-role-key
+   ```
+5. Test your connection:
+   ```bash
+   npm run test:supabase
+   ```
+6. Migrate your existing dishes, menus, gallery, and settings directly into Supabase:
+   ```bash
+   npm run migrate:supabase
+   ```
+7. Start your server: `npm start`. All data will now be live on Supabase!
 
 ---
 

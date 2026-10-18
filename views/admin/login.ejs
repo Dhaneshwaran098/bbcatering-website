@@ -5,6 +5,44 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Admin Login | BB Catering</title>
 <link rel="stylesheet" href="/css/style.css">
+<style>
+  .admin-success-msg {
+    background: #ecfdf5;
+    border: 1px solid #10b981;
+    color: #065f46;
+    padding: 12px 16px;
+    border-radius: var(--radius-sm);
+    font-size: 13.5px;
+    margin-top: 18px;
+    line-height: 1.5;
+  }
+  .login-helper-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: -6px;
+    font-size: 13px;
+  }
+  .login-helper-row a {
+    color: var(--gold-deep);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .login-helper-row a:hover {
+    text-decoration: underline;
+  }
+  .back-to-site {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 13px;
+    color: var(--ink-soft);
+    text-decoration: none;
+  }
+  .back-to-site:hover {
+    color: var(--red);
+  }
+</style>
 </head>
 <body class="admin-body">
   <div class="admin-login-wrap">
@@ -13,22 +51,32 @@
       <h1>Admin Login</h1>
       <p class="sub">BB Catering — content dashboard</p>
 
-      <% if (error) { %>
+      <% if (locals.msg) { %>
+        <div class="admin-success-msg"><%= msg %></div>
+      <% } %>
+
+      <% if (locals.error) { %>
         <div class="admin-error"><%= error %></div>
       <% } %>
 
       <form method="POST" action="/admin/login">
         <input type="hidden" name="next" value="<%= next %>">
         <div class="admin-field">
-          <label for="username">Username</label>
-          <input type="text" id="username" name="username" required autofocus>
+          <label for="username">Username or Email</label>
+          <input type="text" id="username" name="username" placeholder="admin or your email" required autofocus>
         </div>
         <div class="admin-field">
           <label for="password">Password</label>
-          <input type="password" id="password" name="password" required>
+          <input type="password" id="password" name="password" placeholder="••••••••" required>
+        </div>
+        <div class="login-helper-row">
+          <span></span>
+          <a href="/admin/forgot-password">Forgot password?</a>
         </div>
         <button type="submit" class="admin-btn--primary" style="margin-top:8px;">Log In</button>
       </form>
+
+      <a href="/" class="back-to-site">&larr; Return to BB Catering website</a>
     </div>
   </div>
 </body>
