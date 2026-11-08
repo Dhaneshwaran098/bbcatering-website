@@ -211,11 +211,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Handle URL hashes on load (e.g., #veg or #non-veg)
+  // Handle URL hashes on load (e.g., #veg, #non-veg, #breakfast)
   if (window.location.hash === '#veg' || window.location.hash === '#veg-menus') {
     switchMenuCategory('cat-section-veg');
   } else if (window.location.hash === '#non-veg' || window.location.hash === '#non-veg-menus') {
     switchMenuCategory('cat-section-non-veg');
+  } else if (window.location.hash === '#breakfast' || window.location.hash === '#breakfast-menus') {
+    switchMenuCategory('cat-section-breakfast');
   }
 
   /* ---------- Gallery lightbox ---------- */

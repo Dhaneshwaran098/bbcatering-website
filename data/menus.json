@@ -233,5 +233,100 @@
       "Beans Punjab Curry",
       "Pickle, Apalam"
     ]
+  },
+  {
+    "id": "breakfast-1",
+    "title": "Breakfast Menu 1",
+    "name": "Traditional South Indian Breakfast",
+    "type": "Breakfast",
+    "badge": "Classic Choice",
+    "price": "₹160 Per Head",
+    "description": "Start your special day with a delicious and satisfying traditional South Indian breakfast prepared with fresh ingredients and authentic flavors.",
+    "image": "/images/menus/breakfast-1.jpg",
+    "items": [
+      "🍬 Sweet",
+      "🍚 Idly",
+      "🥣 Pongal",
+      "🍩 Vadai",
+      "🥥 2 Varieties of Chutney",
+      "🍛 Sambar",
+      "🥟 Poori",
+      "🥔 Aloo Masala / Vadacurry",
+      "🍃 Banana Leaf Service",
+      "💧 Water Bottle"
+    ],
+    "perfectFor": [
+      "Family Functions",
+      "Seemantham",
+      "Birthday Celebrations",
+      "Small Gatherings",
+      "Corporate Events"
+    ]
+  },
+  {
+    "id": "breakfast-2",
+    "title": "Breakfast Menu 2",
+    "name": "Expanded Traditional Breakfast",
+    "type": "Breakfast",
+    "badge": "Most Popular",
+    "price": "₹200 Per Head",
+    "description": "Upgrade your breakfast experience with an expanded menu featuring additional traditional favorites and refreshing coffee to delight your guests.",
+    "image": "/images/menus/breakfast-2.jpg",
+    "items": [
+      "🍬 Sweet",
+      "🍚 Idly",
+      "🥣 Pongal",
+      "🍩 Vadai",
+      "🥥 2 Varieties of Chutney",
+      "🍛 Sambar",
+      "☕ Coffee",
+      "🥟 Poori",
+      "🧆 Channa Masala",
+      "🍜 Idiyappam",
+      "🍲 Vadacurry",
+      "🍃 Banana Leaf Service",
+      "💧 Water Bottle"
+    ],
+    "perfectFor": [
+      "Weddings & Engagements",
+      "Housewarming Functions",
+      "Temple Events",
+      "Corporate Breakfast Meetings",
+      "Family Celebrations"
+    ]
+  },
+  {
+    "id": "breakfast-3",
+    "title": "Breakfast Menu 3",
+    "name": "Royal South Indian Breakfast Feast",
+    "type": "Breakfast",
+    "badge": "Grand Spread",
+    "price": "₹250 Per Head",
+    "description": "Our premium breakfast package offers a complete and luxurious South Indian dining experience with a wide variety of dishes to satisfy every guest.",
+    "image": "/images/menus/breakfast-3.jpg",
+    "items": [
+      "🍬 Sweet",
+      "🍚 Idly",
+      "🥣 Pongal",
+      "🍩 Vadai",
+      "🥥 2 Varieties of Chutney",
+      "🍛 Sambar",
+      "🥟 Poori",
+      "🧆 Channa Masala",
+      "🍜 Idiyappam",
+      "🍲 Kuruma",
+      "🥞 Dosa",
+      "🍛 Vadacurry",
+      "☕ Coffee",
+      "🍃 Banana Leaf Service",
+      "💧 Water Bottle"
+    ],
+    "perfectFor": [
+      "Weddings",
+      "Reception Breakfasts",
+      "Corporate Events",
+      "VIP Gatherings",
+      "Large Family Functions"
+    ]
   }
 ]

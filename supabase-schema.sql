@@ -28,9 +28,16 @@ CREATE TABLE IF NOT EXISTS public.menus (
   type TEXT,
   badge TEXT,
   image TEXT,
+  price TEXT,
+  description TEXT,
+  perfect_for JSONB DEFAULT '[]'::jsonb,
   items JSONB DEFAULT '[]'::jsonb,
   created_at TIMESTAMPTZ DEFAULT timezone('utc'::text, now())
 );
+
+ALTER TABLE public.menus ADD COLUMN IF NOT EXISTS price TEXT;
+ALTER TABLE public.menus ADD COLUMN IF NOT EXISTS description TEXT;
+ALTER TABLE public.menus ADD COLUMN IF NOT EXISTS perfect_for JSONB DEFAULT '[]'::jsonb;
 
 -- 3. Gallery Table
 CREATE TABLE IF NOT EXISTS public.gallery (

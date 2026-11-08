@@ -3,8 +3,9 @@
      ========================================================= -->
 <%
   const allMenus = menus || [];
-  const nonVegMenus = allMenus.filter(m => m.type !== 'Vegetarian');
+  const nonVegMenus = allMenus.filter(m => m.type === 'Non-Vegetarian' || (m.type !== 'Vegetarian' && m.type !== 'Breakfast'));
   const vegMenus = allMenus.filter(m => m.type === 'Vegetarian');
+  const breakfastMenus = allMenus.filter(m => m.type === 'Breakfast');
 %>
 
 <div class="gjm-menu-root" id="celebration-menus">
@@ -52,6 +53,23 @@
               <span class="text-mobile">Pure Veg</span>
             </span>
             <span class="toggle-count"><span class="count-num"><%= vegMenus.length %></span><span class="count-unit"> Menus</span></span>
+          </button>
+
+          <button 
+            type="button" 
+            class="gjm-cat-toggle-btn breakfast" 
+            id="btn-cat-breakfast" 
+            role="tab" 
+            aria-selected="false" 
+            aria-controls="cat-section-breakfast"
+            data-target="cat-section-breakfast"
+          >
+            <span class="food-symbol veg-symbol" aria-hidden="true"><span class="dot"></span></span>
+            <span class="toggle-text">
+              <span class="text-desktop">Traditional Breakfast</span>
+              <span class="text-mobile">Breakfast</span>
+            </span>
+            <span class="toggle-count"><span class="count-num"><%= breakfastMenus.length %></span><span class="count-unit"> Menus</span></span>
           </button>
         </div>
       </div>
@@ -403,6 +421,263 @@
                   <a href="https://wa.me/<%= settings.whatsapp %>?text=Hi%2C%20I%20am%20interested%20in%20customizing%20<%= encodeURIComponent(m.title + ' (' + m.name + ')') %>." target="_blank" rel="noopener" class="gjm-acc-btn">
                     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.301-.15-1.78-.878-2.056-.978-.276-.1-.476-.15-.677.15-.201.3-.777.978-.952 1.179-.176.2-.351.226-.652.075-.301-.15-1.272-.469-2.424-1.497-.896-.799-1.501-1.787-1.677-2.088-.175-.301-.019-.464.132-.614.136-.135.301-.351.451-.527.151-.176.201-.301.302-.502.101-.2.05-.376-.025-.526-.075-.15-.677-1.633-.928-2.235-.245-.587-.494-.507-.677-.517-.176-.01-.376-.01-.577-.01-.201 0-.526.075-.802.376-.276.301-1.053 1.029-1.053 2.511s1.078 2.912 1.229 3.113c.15.2 2.121 3.239 5.139 4.542.718.31 1.279.495 1.716.634.721.229 1.377.197 1.896.119.579-.087 1.78-.727 2.031-1.429.251-.702.251-1.303.176-1.429-.076-.125-.276-.201-.577-.351zM12.04 2c-5.522 0-10 4.477-10 10 0 1.765.459 3.424 1.261 4.871L2 22l5.281-1.385A9.957 9.957 0 0 0 12.04 22c5.522 0 10-4.478 10-10s-4.478-10-10-10zm0 18.273c-1.564 0-3.023-.424-4.283-1.162l-.307-.182-3.178.833.848-3.097-.2-.318A8.232 8.232 0 0 1 3.766 12c0-4.562 3.712-8.273 8.274-8.273 4.562 0 8.273 3.711 8.273 8.273 0 4.562-3.711 8.273-8.273 8.273z"/></svg>
                     <span>Inquire for <%= m.title %></span>
+                  </a>
+                </div>
+
+              </div>
+            </div>
+          <% }) %>
+        </div>
+
+      <% } %>
+
+    </div>
+  </section>
+
+  <!-- =========================================================
+       CATEGORY 3: TRADITIONAL SOUTH INDIAN BREAKFAST MENUS
+       ========================================================= -->
+  <section class="gjm-menu-section gjm-breakfast-section gjm-category-content" id="cat-section-breakfast" role="tabpanel" aria-labelledby="btn-cat-breakfast" style="display:none;">
+    <div class="container">
+      
+      <!-- Section Header -->
+      <div class="gjm-menu-header" data-reveal="fade">
+        <div class="eyebrow eyebrow--breakfast">
+          <span class="food-symbol veg-symbol" aria-hidden="true"><span class="dot"></span></span>
+          <span>Auspicious Morning Catering</span>
+        </div>
+        <h2>Traditional South Indian Breakfast Menus</h2>
+        <p>Start your auspicious celebrations with steaming soft idlies, crispy vadai, traditional pongal, and aromatic filter coffee served with authentic banana leaf hospitality.</p>
+      </div>
+
+      <% if (breakfastMenus && breakfastMenus.length > 0) { %>
+
+        <!-- Quick 3-Tier Pricing Overview Cards -->
+        <div class="gjm-breakfast-cards-strip" data-reveal="fade">
+          <% breakfastMenus.forEach((m, idx) => { %>
+            <div class="gjm-bcard <%= idx === 1 ? 'featured' : '' %>" onclick="document.getElementById('gjm-breakfast-tab-<%= idx %>')?.click();">
+              <div class="gjm-bcard-top">
+                <span class="gjm-bcard-badge"><%= m.badge || 'Breakfast Special' %></span>
+                <% if (idx === 1) { %><span class="gjm-bcard-popular">Popular</span><% } %>
+              </div>
+              <h3 class="gjm-bcard-title"><%= m.title %></h3>
+              <div class="gjm-bcard-price"><%= m.price %></div>
+              <div class="gjm-bcard-items-count"><%= m.items.length %> Signature Dishes</div>
+              <p class="gjm-bcard-desc"><%= m.name %></p>
+              <div class="gjm-bcard-footer">
+                <span class="gjm-bcard-action">View Full Menu &amp; Spread &rarr;</span>
+              </div>
+            </div>
+          <% }) %>
+        </div>
+
+        <!-- Desktop / Tablet Tabs -->
+        <div class="gjm-tabs-container" data-reveal="fade">
+          <div class="gjm-tabs-wrapper gjm-tabs-wrapper--breakfast" role="tablist" aria-label="Traditional Breakfast Menus">
+            <% breakfastMenus.forEach((m, idx) => { %>
+              <button 
+                class="gjm-tab-btn gjm-tab-btn--breakfast <%= idx === 0 ? 'active' : '' %>" 
+                role="tab" 
+                aria-selected="<%= idx === 0 ? 'true' : 'false' %>"
+                aria-controls="gjm-breakfast-panel-<%= idx %>"
+                id="gjm-breakfast-tab-<%= idx %>"
+                data-target="gjm-breakfast-panel-<%= idx %>"
+              >
+                <span class="tab-title"><%= m.title %></span>
+                <% if (m.price) { %><span class="tab-price"><%= m.price %></span><% } %>
+                <% if (m.name) { %><span class="tab-name"><%= m.name %></span><% } %>
+              </button>
+            <% }) %>
+          </div>
+        </div>
+
+        <!-- Desktop / Tablet Menu Board Panels -->
+        <div class="gjm-board-wrapper" data-reveal="scale">
+          <% breakfastMenus.forEach((m, idx) => { 
+               const half = Math.ceil(m.items.length / 2);
+               const col1 = m.items.slice(0, half);
+               const col2 = m.items.slice(half);
+          %>
+            <div 
+              class="gjm-menu-panel gjm-breakfast-panel <%= idx === 0 ? 'active' : '' %>" 
+              id="gjm-breakfast-panel-<%= idx %>"
+              role="tabpanel"
+              aria-labelledby="gjm-breakfast-tab-<%= idx %>"
+            >
+              <div class="gjm-menu-board gjm-board--breakfast">
+                
+                <!-- Board Header -->
+                <div class="gjm-board-header gjm-board-header--breakfast">
+                  <div class="left-info">
+                    <span class="food-symbol veg-symbol" aria-hidden="true"><span class="dot"></span></span>
+                    <span class="gjm-board-title gjm-board-title--breakfast"><%= m.title %></span>
+                    <% if (m.price) { %>
+                      <span class="gjm-price-pill"><%= m.price %></span>
+                    <% } %>
+                    <% if (m.name) { %>
+                      <span class="gjm-board-subtitle">— <%= m.name %></span>
+                    <% } %>
+                  </div>
+                  <div>
+                    <span class="gjm-badge-tag breakfast">
+                      <%= m.badge || 'Pure Vegetarian' %>
+                    </span>
+                  </div>
+                </div>
+
+                <!-- Description Bar -->
+                <% if (m.description) { %>
+                  <div class="gjm-board-desc-box">
+                    <p class="gjm-board-desc"><%= m.description %></p>
+                  </div>
+                <% } %>
+
+                <!-- Board Grid: Numbered Items (2 cols) + Image & Details (right) -->
+                <div class="gjm-board-grid">
+                  <div>
+                    <div class="gjm-items-grid">
+                      <!-- Column 1 -->
+                      <div class="gjm-col">
+                        <% col1.forEach((item, i) => { %>
+                          <div class="gjm-item gjm-item--breakfast">
+                            <span class="gjm-item-number"><%= i + 1 %>.</span>
+                            <span class="gjm-item-text"><%= item %></span>
+                          </div>
+                        <% }) %>
+                      </div>
+
+                      <!-- Column 2 -->
+                      <div class="gjm-col">
+                        <% col2.forEach((item, i) => { %>
+                          <div class="gjm-item gjm-item--breakfast">
+                            <span class="gjm-item-number"><%= half + i + 1 %>.</span>
+                            <span class="gjm-item-text"><%= item %></span>
+                          </div>
+                        <% }) %>
+                      </div>
+                    </div>
+
+                    <!-- Perfect For Box -->
+                    <% if (m.perfectFor && m.perfectFor.length > 0) { %>
+                      <div class="gjm-perfect-for-box">
+                        <div class="gjm-perfect-for-label">
+                          <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                          <span>Perfect for:</span>
+                        </div>
+                        <div class="gjm-perfect-for-tags">
+                          <% m.perfectFor.forEach(tag => { %>
+                            <span class="gjm-perfect-tag">✓ <%= tag %></span>
+                          <% }) %>
+                        </div>
+                      </div>
+                    <% } %>
+                  </div>
+
+                  <!-- Featured Dish Image & Booking Action -->
+                  <div class="gjm-image-wrap">
+                    <div class="gjm-image-card gjm-image-card--breakfast">
+                      <img src="<%= m.image %>" alt="<%= m.title %> - <%= m.name %>" loading="lazy">
+                      <div class="gjm-image-overlay">
+                        <span><%= m.name || m.title %></span>
+                      </div>
+                    </div>
+
+                    <div class="gjm-board-action">
+                      <a href="https://wa.me/<%= settings.whatsapp %>?text=Hi%2C%20I%20am%20interested%20in%20booking%20<%= encodeURIComponent(m.title + ' (' + (m.price || '') + ')') %>." target="_blank" rel="noopener" class="gjm-acc-btn gjm-acc-btn--board">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.301-.15-1.78-.878-2.056-.978-.276-.1-.476-.15-.677.15-.201.3-.777.978-.952 1.179-.176.2-.351.226-.652.075-.301-.15-1.272-.469-2.424-1.497-.896-.799-1.501-1.787-1.677-2.088-.175-.301-.019-.464.132-.614.136-.135.301-.351.451-.527.151-.176.201-.301.302-.502.101-.2.05-.376-.025-.526-.075-.15-.677-1.633-.928-2.235-.245-.587-.494-.507-.677-.517-.176-.01-.376-.01-.577-.01-.201 0-.526.075-.802.376-.276.301-1.053 1.029-1.053 2.511s1.078 2.912 1.229 3.113c.15.2 2.121 3.239 5.139 4.542.718.31 1.279.495 1.716.634.721.229 1.377.197 1.896.119.579-.087 1.78-.727 2.031-1.429.251-.702.251-1.303.176-1.429-.076-.125-.276-.201-.577-.351zM12.04 2c-5.522 0-10 4.477-10 10 0 1.765.459 3.424 1.261 4.871L2 22l5.281-1.385A9.957 9.957 0 0 0 12.04 22c5.522 0 10-4.478 10-10s-4.478-10-10-10zm0 18.273c-1.564 0-3.023-.424-4.283-1.162l-.307-.182-3.178.833.848-3.097-.2-.318A8.232 8.232 0 0 1 3.766 12c0-4.562 3.712-8.273 8.274-8.273 4.562 0 8.273 3.711 8.273 8.273 0 4.562-3.711 8.273-8.273 8.273z"/></svg>
+                        <span>Book <%= m.title %> (<%= m.price %>)</span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          <% }) %>
+        </div>
+
+        <!-- Mobile / Phone Card Accordions -->
+        <div class="gjm-mobile-accordion gjm-mobile-accordion--breakfast">
+          <% breakfastMenus.forEach((m, idx) => { %>
+            <div class="gjm-acc-card gjm-acc-card--breakfast">
+              <button 
+                class="gjm-acc-header gjm-acc-header--breakfast <%= idx === 0 ? 'active' : '' %>"
+                data-acc-target="gjm-breakfast-acc-body-<%= idx %>"
+                aria-expanded="<%= idx === 0 ? 'true' : 'false' %>"
+              >
+                <div class="gjm-acc-header-content">
+                  <span class="food-symbol veg-symbol" aria-hidden="true"><span class="dot"></span></span>
+                  <div class="gjm-acc-header-info">
+                    <div class="gjm-acc-badge-row">
+                      <span class="acc-menu-tag"><%= m.title %></span>
+                      <% if (m.price) { %>
+                        <span class="acc-price-pill"><%= m.price %></span>
+                      <% } %>
+                      <% if (m.badge) { %>
+                        <span class="acc-feature-badge breakfast"><%= m.badge %></span>
+                      <% } %>
+                    </div>
+                    <div class="gjm-acc-menu-name"><%= m.name %></div>
+                  </div>
+                </div>
+                <div class="gjm-acc-chevron-wrap" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg>
+                </div>
+              </button>
+
+              <div class="gjm-acc-body <%= idx === 0 ? 'open' : '' %>" id="gjm-breakfast-acc-body-<%= idx %>">
+                
+                <!-- Featured Dish Image Card at top of accordion -->
+                <div class="gjm-acc-hero-image">
+                  <img src="<%= m.image %>" alt="<%= m.title %> - <%= m.name %>" loading="lazy">
+                  <div class="gjm-acc-image-scrim">
+                    <span class="gjm-acc-image-tag"><%= m.name || m.title %></span>
+                  </div>
+                </div>
+
+                <% if (m.description) { %>
+                  <div class="gjm-acc-desc">
+                    <p><%= m.description %></p>
+                  </div>
+                <% } %>
+
+                <!-- Course Items Count -->
+                <div class="gjm-acc-items-header">
+                  <span>Complete Menu Spread (<%= m.items.length %> Items)</span>
+                </div>
+
+                <!-- Numbered items list -->
+                <ol class="gjm-acc-list gjm-acc-list--breakfast">
+                  <% m.items.forEach((item, i) => { %>
+                    <li>
+                      <span class="acc-item-num"><%= (i + 1) < 10 ? '0' + (i + 1) : (i + 1) %></span>
+                      <span class="acc-item-text"><%= item %></span>
+                    </li>
+                  <% }) %>
+                </ol>
+
+                <!-- Perfect for tags on mobile -->
+                <% if (m.perfectFor && m.perfectFor.length > 0) { %>
+                  <div class="gjm-acc-perfect-for">
+                    <div class="acc-perfect-label">
+                      <svg viewBox="0 0 20 20" fill="currentColor" width="14" height="14"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                      <span>Recommended for:</span>
+                    </div>
+                    <div class="acc-perfect-tags">
+                      <% m.perfectFor.forEach(tag => { %>
+                        <span class="acc-perfect-tag">✓ <%= tag %></span>
+                      <% }) %>
+                    </div>
+                  </div>
+                <% } %>
+
+                <!-- Quick WhatsApp Action -->
+                <div class="gjm-acc-action">
+                  <a href="https://wa.me/<%= settings.whatsapp %>?text=Hi%2C%20I%20am%20interested%20in%20booking%20<%= encodeURIComponent(m.title + ' (' + (m.price || '') + ')') %>." target="_blank" rel="noopener" class="gjm-acc-btn">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.301-.15-1.78-.878-2.056-.978-.276-.1-.476-.15-.677.15-.201.3-.777.978-.952 1.179-.176.2-.351.226-.652.075-.301-.15-1.272-.469-2.424-1.497-.896-.799-1.501-1.787-1.677-2.088-.175-.301-.019-.464.132-.614.136-.135.301-.351.451-.527.151-.176.201-.301.302-.502.101-.2.05-.376-.025-.526-.075-.15-.677-1.633-.928-2.235-.245-.587-.494-.507-.677-.517-.176-.01-.376-.01-.577-.01-.201 0-.526.075-.802.376-.276.301-1.053 1.029-1.053 2.511s1.078 2.912 1.229 3.113c.15.2 2.121 3.239 5.139 4.542.718.31 1.279.495 1.716.634.721.229 1.377.197 1.896.119.579-.087 1.78-.727 2.031-1.429.251-.702.251-1.303.176-1.429-.076-.125-.276-.201-.577-.351zM12.04 2c-5.522 0-10 4.477-10 10 0 1.765.459 3.424 1.261 4.871L2 22l5.281-1.385A9.957 9.957 0 0 0 12.04 22c5.522 0 10-4.478 10-10s-4.478-10-10-10zm0 18.273c-1.564 0-3.023-.424-4.283-1.162l-.307-.182-3.178.833.848-3.097-.2-.318A8.232 8.232 0 0 1 3.766 12c0-4.562 3.712-8.273 8.274-8.273 4.562 0 8.273 3.711 8.273 8.273 0 4.562-3.711 8.273-8.273 8.273z"/></svg>
+                    <span>Inquire for <%= m.title %> (<%= m.price %>)</span>
                   </a>
                 </div>
 
