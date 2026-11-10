@@ -185,12 +185,17 @@ function startServer(portToTry) {
 
   server.once('error', onError);
   server.once('listening', onListening);
-  server.listen(portToTry);
+  server.listen(portToTry, '0.0.0.0');
 }
 
 const store = require('./lib/store');
-store.init().finally(() => {
-  startServer(PORT);
+
+// Start the HTTP server immediately so Render detects the open port in < 50ms (prevents 502 Bad Gateway)
+startServer(PORT);
+
+// Sync Supabase in the background if configured (local JSON cache is already pre-loaded)
+store.init().catch((err) => {
+  console.warn('Background store init warning:', err.message);
 });
 
 module.exports = server;
